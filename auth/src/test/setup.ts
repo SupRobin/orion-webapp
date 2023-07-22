@@ -37,7 +37,7 @@ global.signin = async () => {
     const password = 'password';
 
     const response = await request(app)
-        .post('api/users/signup')
+        .post('/api/users/signup')
         .send({email, password})
         .expect(404)
 

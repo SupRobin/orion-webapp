@@ -4,14 +4,14 @@ import Router from "next/router";
 
 const signout = () => {
     const { doRequest } = useRequest({
-        url: 'api/users/signout',
+        url: '/api/users/signout',
         method: 'post',
         body: {},
         onSuccess: () => Router.push('/')
     })
 
     useEffect( () => {
-        doRequest();
+        doRequest().catch(err=> console.log(err));
     }, [])
 
     return <div> Signing you out...</div>

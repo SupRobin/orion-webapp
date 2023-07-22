@@ -1,13 +1,12 @@
 import {useState} from "react";
-import Router from 'next/router'
-import axios from 'axios';
+import Router from 'next/router';
 import useRequest from "../../hooks/use-request";
-const signup = () => {
+const signin = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { doRequest, errors} = useRequest({
-        url: 'api/users/signin',
+        url: '/api/users/signin',
         method: 'post',
         body: {
             email, password
@@ -43,4 +42,4 @@ const signup = () => {
 };
 
 
-export default signup
+export default signin

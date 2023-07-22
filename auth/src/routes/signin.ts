@@ -1,14 +1,13 @@
 import express, {Request, Response} from 'express';
 import {body} from 'express-validator';
-import {validateRequest} from "../middlewares/validate-request";
-import {BadRequestError} from "../errors/bad-request-error";
+import {validateRequest, BadRequestError} from "@orionco/common";
 import {User} from '../models/user'
 import { Password } from "../services/password";
 import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
-router.post('api/users/signIn',
+router.post('/api/users/signin',
     [
         body('email')
             .isEmail()

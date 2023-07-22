@@ -7,19 +7,20 @@ const requestHook = ({url, method, body, onSuccess}) => {
         try {
             setErrors(null);
             const response = await axios[method](url, body);
-            return response.data;
 
             if(onSuccess){
                 onSuccess(response.data)
             }
+
+            return response
         } catch (err) {
             setErrors(
                 <div className={"alert alert-danger"}>
                     <h4> OOPS...</h4>
                     <ul className={"my-0"}>
-                        {err.response.data.errors.map(err =>
+                        {err.response.data.errors.map((err) =>(
                             <li key={err.message}>{err.message} </li>
-                        )}
+                        ))}
                     </ul>
                 </div>
             )
