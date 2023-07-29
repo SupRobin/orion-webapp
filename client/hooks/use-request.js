@@ -12,7 +12,7 @@ const requestHook = ({url, method, body, onSuccess}) => {
                 onSuccess(response.data)
             }
 
-            return response
+            return response.data
         } catch (err) {
             setErrors(
                 <div className={"alert alert-danger"}>

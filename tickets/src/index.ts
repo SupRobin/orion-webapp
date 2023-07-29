@@ -13,6 +13,10 @@ const start = async () => {
 
     try {
         await natsWrapper.connect('ticketing', 'fdsaasfssaas', 'http://nats-srv:4222');
+        natsWrapper.client.on('close', () => {
+            console.log('NATS connection closed')
+            process.exit();
+        })
         await mongoose.connect(process.env.MONGO_URI);
         console.log("connected to mongodb")
     } catch (err) {

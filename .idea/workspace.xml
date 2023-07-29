@@ -8,94 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d5a155d-5f6e-41db-b37c-e28fd18cbaac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tickets/src/nats-wrapper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/auth/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/auth/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/auth/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/routes/current-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/routes/current-user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/routes/signin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/routes/signin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/routes/signup.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/routes/signup.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/test/setup.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/test/setup.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/build-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/0.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/1.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/11.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/11.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/12.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/12.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/13.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/13.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/14.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/14.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/3.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/4.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/5.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/6.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/9.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/index.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/cache/webpack/client-development/index.pack.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/server/_error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/server/middleware-build-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/server/middleware-build-manifest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/server/pages-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/server/pages-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/server/pages/_app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/server/pages/_document.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/server/pages/_error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/server/pages/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/server/webpack-runtime.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/chunks/_error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/chunks/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/chunks/pages/_app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/chunks/pages/_error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/chunks/pages/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/chunks/webpack.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/static/chunks/webpack.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/development/_buildManifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/static/development/_buildManifest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/webpack/df6fc98b27b500ba.webpack.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/webpack/f0458b23b83ee00e.webpack.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/webpack/webpack.df6fc98b27b500ba.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/static/webpack/webpack.f0458b23b83ee00e.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.next/trace" beforeDir="false" afterPath="$PROJECT_DIR$/client/.next/trace" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/api/build-client.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/api/build-client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/hooks/use-request.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/hooks/use-request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/auth/signin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/auth/signin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/auth/signout.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/auth/signout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/auth/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/auth/signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/events/base-publisher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/events/base-publisher.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s/auth-depl.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/auth-depl.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s/client-depl.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/client-depl.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infra/k8s/ingress-srv.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/ingress-srv.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s/nats-depl.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/nats-depl.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s/tickets-depl.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/tickets-depl.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s/tickets-mongo-depl.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/tickets-mongo-depl.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nats-test/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/nats-test/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nats-test/src/events/base-listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nats-test/src/events/base-listener.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nats-test/src/events/base-publisher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nats-test/src/events/base-publisher.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nats-test/src/events/subjects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nats-test/src/events/subjects.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nats-test/src/events/ticket-created-event.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nats-test/src/events/ticket-created-event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nats-test/src/events/ticket-created-listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nats-test/src/events/ticket-created-listener.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nats-test/src/events/ticket-created-publisher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nats-test/src/events/ticket-created-publisher.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nats-test/src/listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nats-test/src/listener.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nats-test/src/publisher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nats-test/src/publisher.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skaffold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/skaffold.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/events/publishers/ticket-created-publisher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/events/publishers/ticket-created-publisher.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tickets/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/models/tickets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/models/tickets.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/__test__/index.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/routes/__test__/index.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/__test__/new.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/routes/__test__/new.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/__test__/show.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/routes/__test__/show.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/__test__/update.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/routes/__test__/update.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/new.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/routes/new.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/show.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/routes/show.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/updates.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/routes/updates.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/test/setup.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tickets/src/test/setup.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,24 +40,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/fnxmw6c6yp/Microscervices/ticketing/common/src/events",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/fnxmw6c6yp/Microscervices/ticketing/tickets/node_modules/jest",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/fnxmw6c6yp/Microscervices/ticketing/common/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/fnxmw6c6yp/Microscervices/ticketing/common/src/events&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/fnxmw6c6yp/Microscervices/ticketing/tickets/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/fnxmw6c6yp/Microscervices/ticketing/common/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/common/src/events" />
