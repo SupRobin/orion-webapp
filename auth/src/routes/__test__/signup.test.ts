@@ -8,43 +8,43 @@ it('returns a 201 on successful signup', async () => {
             email: 'test@test.com',
             password: 'password'
         })
-        .expect(404);//this is because I don't have this set up in the back end host logic
+        .expect(201);
 });
 
-it('returns a 400 with invalid email', async () => {
+it('returns a 400 with an invalid email', async () => {
     return request(app)
         .post('/api/users/signup')
         .send({
-            email: 'apple sauce',
+            email: 'alskdflaskjfd',
             password: 'password'
         })
-        .expect(404);//this is because I don't have this set up in the back end host logic
+        .expect(400);
 });
 
-it('returns a 400 with invalid credentials', async () => {
+it('returns a 400 with an invalid password', async () => {
     return request(app)
         .post('/api/users/signup')
         .send({
-            email: 'test@test.com',
+            email: 'alskdflaskjfd',
             password: 'p'
         })
-        .expect(404);//this is because I don't have this set up in the back end host logic
+        .expect(400);
 });
 
-it('returns a 400 with missing email and/or password', async () => {
+it('returns a 400 with missing email and password', async () => {
     await request(app)
         .post('/api/users/signup')
         .send({
-            email: 'test@test.com',
+            email: 'test@test.com'
         })
-        .expect(404);//this is because I don't have this set up in the back end host logic
+        .expect(400);
 
     await request(app)
         .post('/api/users/signup')
         .send({
-            password: 'password'
+            password: 'alskjdf'
         })
-        .expect(404);//this is because I don't have this set up in the back end host logic
+        .expect(400);
 });
 
 it('disallows duplicate emails', async () => {
@@ -54,15 +54,16 @@ it('disallows duplicate emails', async () => {
             email: 'test@test.com',
             password: 'password'
         })
-        .expect(404);//this is because I don't have this set up in the back end host logic
+        .expect(201);
+
     await request(app)
         .post('/api/users/signup')
         .send({
             email: 'test@test.com',
             password: 'password'
         })
-        .expect(404);//this is because I don't have this set up in the back end host logic
-})
+        .expect(400);
+});
 
 it('sets a cookie after successful signup', async () => {
     const response = await request(app)
@@ -71,6 +72,7 @@ it('sets a cookie after successful signup', async () => {
             email: 'test@test.com',
             password: 'password'
         })
-        .expect(404);//this is because I don't have this set up in the back end host logic
-    // expect(response.get("Set-Cookie")).toBeDefined() fails because of the same thing above.
+        .expect(201);
+
+    expect(response.get('Set-Cookie')).toBeDefined();
 });

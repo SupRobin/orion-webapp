@@ -2,3 +2,4 @@ infra
 skaffold.yaml
 **/package-lock.json
 **/package.json
+.env

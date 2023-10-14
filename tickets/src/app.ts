@@ -17,17 +17,17 @@ app.use(
         secure: process.env.NODE_ENV !== 'test',
     })
 );
-app.use(currentUser)
+app.use(currentUser);
 
 app.use(createTicketRouter);
 app.use(showTicketRouter);
 app.use(indexTicketRouter);
-app.use(updateTicketRouter)
+app.use(updateTicketRouter);
 
-app.all('*', async () => {
+app.all('*', async (req, res) => {
     throw new NotFoundError();
-})
+});
 
-app.use(errorHandler)
+app.use(errorHandler);
 
 export { app };

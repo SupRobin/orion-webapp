@@ -3,10 +3,10 @@ import { Ticket} from "../models/tickets";
 
 const router = express.Router();
 
-router.get('/api/tickets', async (res: Response, req: Request) => {
+router.get('/api/tickets/', async (req: Request, res: Response) => {
     const tickets = await Ticket.find({});
 
     res.send(tickets);
-})
+});
 
-export {router as indexTicketRouter}
+export { router as indexTicketRouter };
