@@ -1,9 +1,32 @@
 import express, {request, Request, Response} from "express";
+import {NotAuthorizedError, NotFoundError, requireAuth} from "@orionco/common";
+import {Order, OrderStatus} from "../models/orders";
+import {natsWrapper} from "../nats-wrapper";
+import {OrderCancelledPublisher} from "../events/publishers/order-cancelled-publisher";
 
 const router = express.Router();
 
-router.delete('/api/orders/:orderId', async (req: Request, res: Response) => {
-    res.send({});
+router.delete('/api/orders/:orderId', requireAuth, async (req: Request, res: Response) => {
+    const {orderId} = req.params;
+
+    const order = await Order.findById(orderId);
+
+    if (!order) {
+        throw new NotFoundError();
+    }
+    if (order.userId) {
+        throw new NotAuthorizedError();
+    }
+    order.status = OrderStatus.Cancelled;
+    await order.save();
+
+    await new OrderCancelledPublisher(natsWrapper.client).publish({
+        id: order.id,
+        ticket: {
+            id: order.ticket.id,
+        },
+    })
+    res.status(204).send(order);
 });
 
 export {router as deleteOrderRouter};

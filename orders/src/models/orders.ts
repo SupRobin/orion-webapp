@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import {OrderStatus} from "@orionco/common";
 import {TicketDoc} from "./ticket";
 
+export {OrderStatus};
+
 interface OrderAttrs {
     userId: string;
     status: OrderStatus;

@@ -1,10 +1,11 @@
 import buildClient from "../api/build-client";
+import homepage from "./frontend/homepage";
 
 const LandingPage = ({currentUser}) => {
     return currentUser ? (
-        <h1> You are signed in </h1>
+        homepage()
     ) : (
-        <h1> You are not signed in</h1>
+        homepage()
     );
 }
 //specific to next js fetching data during the showing of the component
