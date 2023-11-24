@@ -4,7 +4,7 @@ import {
     validateRequest,
     NotFoundError,
     requireAuth,
-    NotAuthorizedError
+    NotAuthorizedError, BadRequestError
 } from "@orionco/common";
 import {Ticket} from "../models/tickets";
 import {TicketUpdatedPublisher} from "../events/publishers/ticket-updated-publisher";
@@ -29,6 +29,10 @@ router.put(
             throw new NotFoundError();
         }
 
+        if(ticket.orderId){
+            throw new BadRequestError("Cannot edit a reserved ticket");
+        }
+
         if (ticket.userId !== req.currentUser!.id) {
             throw new NotAuthorizedError();
         }
@@ -43,7 +47,8 @@ router.put(
             id: ticket.id,
             title: ticket.title,
             price: ticket.price,
-            userId: ticket.userId
+            userId: ticket.userId,
+            version: ticket.version
         })
 
         res.send(ticket);

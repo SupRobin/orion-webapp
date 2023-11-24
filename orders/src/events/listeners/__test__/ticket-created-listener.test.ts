@@ -1,9 +1,8 @@
-import {TicketCreatedListener} from "../../events/listeners/ticket-created-listener";
-import {natsWrapper} from "../../nats-wrapper";
+import {TicketCreatedListener} from "../ticket-created-listener";
+import {natsWrapper} from "../../../nats-wrapper";
 import {TicketCreatedEvent} from "@orionco/common";
 import mongoose from "mongoose";
-import {Message} from "node-nats-streaming";
-import {Ticket} from "../../models/ticket";
+import {Ticket} from "../../../models/ticket";
 
 
 const setup = async () => {
@@ -20,7 +19,7 @@ const setup = async () => {
     //create a fake data event
     // @ts-ignore
     const msg: Message = {
-        ack: jest.fn
+        ack: jest.fn()
     };
 
     return {listener, data, msg};
@@ -43,6 +42,9 @@ it('it creates and saves a ticket', async () => {
 
 it('ack the message', async () => {
     //call the onMessage function with the data object + message object
+    const {listener, data, msg} = await setup();
+    await listener.onMessage(data,msg);
 
     //write assertions to make sure ack function is called
+    expect(msg.ack).toHaveBeenCalled();
 });

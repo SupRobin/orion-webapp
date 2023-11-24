@@ -4,7 +4,7 @@ import {updateIfCurrentPlugin} from "mongoose-update-if-current";
 interface TicketAttrs {
     title: string;
     price: number;
-    userId: string;
+    userId?: string;
 }
 
 //instance of what a ticket has and what a normal document has
@@ -13,6 +13,7 @@ interface TicketDoc extends mongoose.Document {
     price: number;
     userId: string;
     version: number;
+    orderId: string;
 }
 
 interface TicketModel extends mongoose.Model<TicketDoc> {
@@ -33,6 +34,7 @@ const ticketSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        orderId: String,
     },
     {
         toJSON: {
@@ -52,4 +54,4 @@ ticketSchema.statics.build = (attrs: TicketAttrs) => {
 
 const Ticket = mongoose.model<TicketDoc, TicketModel>('Ticket', ticketSchema);
 
-export { Ticket };
+export {Ticket};
