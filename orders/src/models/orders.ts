@@ -42,10 +42,6 @@ const orderSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ticket'
     },
-    version: {
-        type: Number,
-        required: true
-    }
 }, {
     toJSON: {
         transform(doc, ret) {
