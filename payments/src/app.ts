@@ -3,10 +3,7 @@ import 'express-async-errors'
 import {json} from 'body-parser';
 import {errorHandler, NotFoundError, currentUser} from "@orionco/common";
 import cookieSession from "cookie-session";
-import {createTicketRouter} from "./routes/new";
-import {showTicketRouter} from "./routes/show";
-import {indexTicketRouter} from "./routes";
-import {updateTicketRouter} from "./routes/updates";
+import {createChargeRouter} from "./routes/new";
 
 const app = express();
 app.set('trust proxy', true);
@@ -19,10 +16,7 @@ app.use(
 );
 app.use(currentUser);
 
-app.use(createTicketRouter);
-app.use(showTicketRouter);
-app.use(indexTicketRouter);
-app.use(updateTicketRouter);
+app.use(createChargeRouter);
 
 app.all('*', async (req, res) => {
     throw new NotFoundError();
@@ -30,4 +24,4 @@ app.all('*', async (req, res) => {
 
 app.use(errorHandler);
 
-export { app };
+export {app};
