@@ -6,4 +6,3 @@ skaffold.yaml
 .env
 **/infra/
 DS_STORE
-
