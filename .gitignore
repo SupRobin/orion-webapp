@@ -3,3 +3,6 @@ skaffold.yaml
 **/package-lock.json
 **/package.json
 .env
+**/infra/
+DS_STORE
+
