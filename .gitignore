@@ -1,6 +1,5 @@
 
 **/package-lock.json
-**/package.json
 /client/node_modules
 /auth/node_modules
 /orders/node_modules
