@@ -1,9 +1,10 @@
-infra
-skaffold.yaml
+
 **/package-lock.json
 **/package.json
-**/node_modules
+/client/node_modules
+/auth/node_modules
+/orders/node_modules
+/payments/node_modules
+expiration/node_modules
 .env
-**/infra/
 DS_STORE
-

@@ -16,7 +16,6 @@ beforeAll(async () => {
 
     const mongo = await MongoMemoryServer.create();
     const mongoUri = mongo.getUri();
-
     await mongoose.connect(mongoUri, {});
 });
 

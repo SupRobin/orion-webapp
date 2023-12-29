@@ -1,21 +1,24 @@
 
 import {Listener, Subjects, ExpirationCompleteEvent, OrderStatus} from "@orionco/common";
 import {Message} from "node-nats-streaming";
-import {Order} from "../../models/orders";
+import {Order} from "../../models/order";
 import {queuegroupname} from './queuegroupname'
 import {OrderCancelledPublisher} from "../publishers/order-cancelled-publisher";
 
 
+
 export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent> {
-    queueGroupName: string = queuegroupname;
-    subject: ExpirationCompleteEvent["subject"] = Subjects.ExpirationComplete;
-    async onMessage(data: ExpirationCompleteEvent["data"], msg: Message) {
+    queueGroupName = queuegroupname;
+    subject: Subjects.ExpirationComplete = Subjects.ExpirationComplete;
+
+    async onMessage(data: ExpirationCompleteEvent['data'], msg: Message) {
         const order = await Order.findById(data.orderId).populate('ticket');
 
-        if(!order){
+        if (!order) {
             throw new Error('Order not found');
         }
-        if(order.status === OrderStatus.Complete){
+
+        if (order.status === OrderStatus.Complete) {
             return msg.ack();
         }
 
@@ -30,7 +33,7 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent
                 id: order.ticket.id,
             },
         });
+
         msg.ack();
     }
-
 }
