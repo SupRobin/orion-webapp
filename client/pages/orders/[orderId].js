@@ -6,12 +6,12 @@ import useRequest from '../../hooks/use-request';
 const OrderShow = ({ order, currentUser }) => {
     const [timeLeft, setTimeLeft] = useState(0);
     const { doRequest, errors } = useRequest({
-        url: '/api/payments',
+        url: '/api/payments/',
         method: 'post',
         body: {
             orderId: order.id,
         },
-        onSuccess: () => Router.push('/orders'),
+        onSuccess: () => console.log(order)  //Router.push('/orders'),
     });
 
     useEffect(() => {
