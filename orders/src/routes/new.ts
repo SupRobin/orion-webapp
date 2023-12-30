@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import express, {Request, Response} from "express";
-import {BadRequestError, currentUser, NotFoundError, OrderStatus, requireAuth, validateRequest} from "@orionco/common";
+import {BadRequestError, NotFoundError, OrderStatus, requireAuth, validateRequest} from "@orionco/common";
 import {body} from "express-validator";
 import {Ticket} from "../models/ticket";
 import {Order} from "../models/order";
@@ -9,7 +9,7 @@ import {natsWrapper} from "../nats-wrapper";
 
 const router = express.Router();
 
-const EXPIRATION_WINDOW_SECONDS = 1 * 60;
+const EXPIRATION_WINDOW_SECONDS =  60;
 
 router.post(
     '/api/orders',
@@ -51,7 +51,7 @@ router.post(
         await order.save();
 
         // Publish an event saying that an order was created
-        new OrderCreatedPublisher(natsWrapper.client).publish({
+        await new OrderCreatedPublisher(natsWrapper.client).publish({
             id: order.id,
             version: order.version,
             status: order.status,

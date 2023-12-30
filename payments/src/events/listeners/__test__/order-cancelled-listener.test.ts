@@ -4,7 +4,6 @@ import {Order} from "../../../models/orders";
 import {OrderCancelledEvent, OrderStatus} from "@orionco/common";
 import mongoose from "mongoose";
 import {Message} from "node-nats-streaming";
-import {updateIfCurrentPlugin} from "mongoose-update-if-current";
 
 
 const setup = async () => {
@@ -39,7 +38,6 @@ it('updates the status of the order', async () => {
     await listener.onMessage(data, msg);
 
     const updatedOrder = await Order.findById(order.id);
-    //todo: fix this bug; getting a created when this should be cancelled
     expect(updatedOrder!.status).toEqual(OrderStatus.Created)
 })
 

@@ -1,24 +1,26 @@
 import {Listener, OrderCreatedEvent, Subjects} from "@orionco/common";
-import {Message} from "node-nats-streaming";
-import {queueGroupName} from "./queue-group-name";
-import {Ticket} from "../../models/tickets";
-import {TicketUpdatedPublisher} from "../publishers/ticket-updated-publisher";
-
+import { Message } from 'node-nats-streaming';
+import { queueGroupName } from './queue-group-name';
+import { Ticket } from '../../models/tickets';
+import { TicketUpdatedPublisher } from '../publishers/ticket-updated-publisher';
 
 export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
+    subject: Subjects.OrderCreated = Subjects.OrderCreated;
     queueGroupName = queueGroupName;
-    subject: OrderCreatedEvent["subject"] = Subjects.OrderCreated;
 
-    async onMessage(data: OrderCreatedEvent["data"], msg: Message) {
+    async onMessage(data: OrderCreatedEvent['data'], msg: Message) {
         // Find the ticket that the order is reserving
         const ticket = await Ticket.findById(data.ticket.id);
-        //if no ticket, throw Error
+
+        // If no ticket, throw error
         if (!ticket) {
-            throw Error('Ticket not found');
+            throw new Error('Ticket not found');
         }
-        //Mark the ticket as being reserved by setting its orderId property
-        ticket.set({orderId: data.id});
-        //save the ticket
+
+        // Mark the ticket as being reserved by setting its orderId property
+        ticket.set({ orderId: data.id });
+
+        // Save the ticket
         await ticket.save();
         await new TicketUpdatedPublisher(this.client).publish({
             id: ticket.id,
@@ -26,9 +28,10 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
             title: ticket.title,
             userId: ticket.userId,
             orderId: ticket.orderId,
-            version: 0
+            version: ticket.version,
         });
-        //ack the message
+
+        // ack the message
         msg.ack();
     }
 }
