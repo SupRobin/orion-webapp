@@ -9,4 +9,9 @@ export enum Subjects {
     ExpirationComplete = 'expiration:complete',
 
     PaymentCreated = 'payment:created',
+
+    CartItemAdded  = 'cart:added',
+    CartItemRemoved = 'cart:removed',
+    CartItemCleared = 'cart:cleared',
+    CartItemUpdated = 'cart:updated',
 }
