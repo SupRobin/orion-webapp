@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
 import {updateIfCurrentPlugin} from "mongoose-update-if-current";
 
-interface TicketAttrs {
+interface ItemAttrs {
     title: string;
     price: number;
     userId?: string;
 }
 
-//instance of what a ticket has and what a normal document has
-interface TicketDoc extends mongoose.Document {
+//instance of what a Item has and what a normal document has
+interface ItemDoc extends mongoose.Document {
     title: string;
     price: number;
     userId: string;
@@ -16,11 +16,11 @@ interface TicketDoc extends mongoose.Document {
     orderId: string;
 }
 
-interface TicketModel extends mongoose.Model<TicketDoc> {
-    build(attrs: TicketAttrs): TicketDoc;
+interface ItemModel extends mongoose.Model<ItemDoc> {
+    build(attrs: ItemAttrs): ItemDoc;
 }
 
-const ticketSchema = new mongoose.Schema(
+const itemSchema = new mongoose.Schema(
     {
         title: {
             type: String,
@@ -45,13 +45,13 @@ const ticketSchema = new mongoose.Schema(
         },
     }
 );
-ticketSchema.set('versionKey', 'version');
-ticketSchema.plugin(updateIfCurrentPlugin);
+itemSchema.set('versionKey', 'version');
+itemSchema.plugin(updateIfCurrentPlugin);
 
-ticketSchema.statics.build = (attrs: TicketAttrs) => {
-    return new Ticket(attrs);
+itemSchema.statics.build = (attrs: ItemAttrs) => {
+    return new Item(attrs);
 };
 
-const Ticket = mongoose.model<TicketDoc, TicketModel>('Ticket', ticketSchema);
+const Item = mongoose.model<ItemDoc, ItemModel>('Item', itemSchema);
 
-export {Ticket};
+export {Item};

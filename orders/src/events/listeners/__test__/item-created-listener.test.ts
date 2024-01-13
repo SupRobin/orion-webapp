@@ -1,14 +1,14 @@
-import {TicketCreatedListener} from "../ticket-created-listener";
+import {ItemsCreatedListener} from "../item-created-listener";
 import {natsWrapper} from "../../../nats-wrapper";
-import {TicketCreatedEvent} from "@orionco/common";
+import {ItemCreatedEvent} from "@orionco/common";
 import mongoose from "mongoose";
-import {Ticket} from "../../../models/ticket";
+import {Item} from "../../../models/item";
 
 
 const setup = async () => {
     //create an instance of the listener
-    const listener = new TicketCreatedListener(natsWrapper.client);
-    const data: TicketCreatedEvent['data'] = {
+    const listener = new ItemCreatedListener(natsWrapper.client);
+    const data: ItemCreatedEvent['data'] = {
         version: 0,
         id: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
@@ -27,17 +27,17 @@ const setup = async () => {
 };
 
 
-it('it creates and saves a ticket', async () => {
+it('it creates and saves a item', async () => {
     //call the onMessage function with the data object + message object
     const {listener, data, msg} = await setup();
     await listener.onMessage(data,msg);
 
-    const ticket = await Ticket.findById(data.id);
-    //write assertions to make sure a ticket was created
+    const item = await Item.findById(data.id);
+    //write assertions to make sure a item was created
 
-    expect(ticket).toBeDefined();
-    expect(ticket!.title).toEqual(data.title);
-    expect(ticket!.price).toEqual(data.price);
+    expect(item).toBeDefined();
+    expect(item!.title).toEqual(data.title);
+    expect(item!.price).toEqual(data.price);
 });
 
 it('ack the message', async () => {

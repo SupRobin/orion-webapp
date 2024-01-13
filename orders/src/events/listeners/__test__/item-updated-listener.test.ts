@@ -1,28 +1,28 @@
-import {TicketCreatedListener} from "../ticket-created-listener";
-import {TicketUpdatedListener} from "../ticket-updated-listener";
+import {ItemsCreatedListener} from "../item-created-listener";
+import {ItemUpdatedListener} from "../item-updated-listener";
 import {natsWrapper} from "../../../nats-wrapper";
 import mongoose from "mongoose";
-import {Ticket} from "../../../models/ticket";
-import {TicketUpdatedEvent} from "@orionco/common";
+import {Item} from "../../../models/item";
+import {ItemUpdatedEvent} from "@orionco/common";
 
 const setup = async () => {
     //create a listener
-    const listener = new TicketUpdatedListener(natsWrapper.client);
+    const listener = new ItemUpdatedListener(natsWrapper.client);
 
-    //create and save a ticket
-    const ticket = Ticket.build({
+    //create and save a item
+    const item = Item.build({
         id: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20
     })
-    await ticket.save();
+    await item.save();
     //create a fake data object
-    const data: TicketUpdatedEvent["data"] = {
-        id: ticket.id,
+    const data: ItemUpdatedEvent["data"] = {
+        id: item.id,
         title: "new concert",
         price: 999,
         userId: "abc",
-        version: ticket.version + 1
+        version: item.version + 1
     };
     //create a fake msg object
     //@ts-ignore
@@ -31,18 +31,18 @@ const setup = async () => {
     }
     //return all this stuff
 
-    return {listener, data, msg, ticket};
+    return {listener, data, msg, item};
 }
 
-it('finds, updates, and saves a ticket', async () => {
-    const {msg, data, ticket, listener} = await setup();
+it('finds, updates, and saves a item', async () => {
+    const {msg, data, item, listener} = await setup();
     await  listener.onMessage(data, msg);
 
-    const updatedTicket = await Ticket.findById(ticket.id);
+    const updatedItem = await Item.findById(item.id);
 
-    expect(updatedTicket!.title).toEqual(data.title);
-    expect(updatedTicket!.price).toEqual(data.price);
-    expect(updatedTicket!.version).toEqual(data.version);
+    expect(updatedItem!.title).toEqual(data.title);
+    expect(updatedItem!.price).toEqual(data.price);
+    expect(updatedItem!.version).toEqual(data.version);
 })
 
 it('acks the message', async () => {
@@ -53,7 +53,7 @@ it('acks the message', async () => {
 })
 
 it('does not call ack if the event has a skipped version number', async () => {
-    const {msg, data, listener, ticket} = await setup();
+    const {msg, data, listener, item} = await setup();
 
     data.version = 10;
     try {
