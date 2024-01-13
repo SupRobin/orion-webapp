@@ -77,6 +77,6 @@ itemSchema.methods.isReserved = async function () {
     return !!existingOrder;
 };
 
-const item = mongoose.model<ItemDoc, ItemModel>('Item', itemSchema);
+const Item = mongoose.model<ItemDoc, ItemModel>('Item', itemSchema);
 
 export { Item };

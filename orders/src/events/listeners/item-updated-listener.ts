@@ -1,22 +1,22 @@
 import { Message} from "node-nats-streaming";
-import {Subjects, Listener, TicketUpdatedEvent} from "@orionco/common";
-import {Ticket} from "../../models/ticket";
+import {Subjects, Listener, ItemUpdatedEvent} from "@orionco/common";
+import {Item} from "../../models/items";
 import {queuegroupname} from "./queuegroupname";
 
-export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
-    subject: Subjects.TicketUpdated = Subjects.TicketUpdated;
+export class ItemUpdatedListener extends Listener<ItemUpdatedEvent> {
+    subject: Subjects.ItemUpdated = Subjects.ItemUpdated;
     queueGroupName = queuegroupname;
 
-    async onMessage(data: TicketUpdatedEvent['data'], msg: Message) {
-        const ticket = await Ticket.findByEvent(data);
+    async onMessage(data: ItemUpdatedEvent['data'], msg: Message) {
+        const item = await Item.findByEvent(data);
 
-        if (!ticket) {
-            throw new Error('Ticket not found');
+        if (!item) {
+            throw new Error('Item not found');
         }
 
         const { title, price } = data;
-        ticket.set({ title, price });
-        await ticket.save();
+        item.set({ title, price });
+        await item.save();
 
         msg.ack();
     }

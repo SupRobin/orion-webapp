@@ -1,8 +1,8 @@
-import {ItemsCreatedListener} from "../item-created-listener";
+import {ItemCreatedListener} from "../item-created-listener";
 import {ItemUpdatedListener} from "../item-updated-listener";
 import {natsWrapper} from "../../../nats-wrapper";
 import mongoose from "mongoose";
-import {Item} from "../../../models/item";
+import {Item} from "../../../models/items";
 import {ItemUpdatedEvent} from "@orionco/common";
 
 const setup = async () => {

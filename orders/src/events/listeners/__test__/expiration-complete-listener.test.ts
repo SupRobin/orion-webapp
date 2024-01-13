@@ -5,23 +5,23 @@ import {Order} from "../../../models/order";
 import {OrderStatus} from "@orionco/common";
 import {ExpirationCompleteEvent} from "@orionco/common/build/events/expiration-complete-event";
 import {Message} from "node-nats-streaming";
-import {Ticket} from "../../../models/ticket";
+import {Item} from "../../../models/items";
 
 
 const setup = async () => {
     const listener = new ExpirationCompleteListener(natsWrapper.client);
 
-    const ticket = Ticket.build({
+    const item = Item.build({
         id: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
     });
-    await ticket.save();
+    await item.save();
     const order = Order.build({
         status: OrderStatus.Created,
         userId: 'alskdfj',
         expiresAt: new Date(),
-        ticket,
+        item,
     });
     await order.save();
 
@@ -34,7 +34,7 @@ const setup = async () => {
         ack: jest.fn(),
     };
 
-    return { listener, order, ticket, data, msg };
+    return { listener, order, item, data, msg };
 };
 it('updates the order status to cancelled', async () => {
     const { listener, order, data, msg } = await setup();

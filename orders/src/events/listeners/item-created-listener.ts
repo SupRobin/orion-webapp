@@ -1,21 +1,21 @@
 import {Message} from "node-nats-streaming";
-import {Subjects, Listener, TicketCreatedEvent} from "@orionco/common";
-import {Ticket} from "../../models/ticket";
+import {Subjects, Listener, ItemCreatedEvent} from "@orionco/common";
+import {Item} from "../../models/items";
 import {queuegroupname} from "./queuegroupname";
 
-export class TicketCreatedListener extends Listener<TicketCreatedEvent> {
-    subject: Subjects.TicketCreated = Subjects.TicketCreated;
+export class ItemCreatedListener extends Listener<ItemCreatedEvent> {
+    subject: Subjects.ItemCreated = Subjects.ItemCreated;
     queueGroupName = queuegroupname;
 
-    async onMessage(data: TicketCreatedEvent['data'], msg: Message) {
+    async onMessage(data: ItemCreatedEvent['data'], msg: Message) {
         const { id, title, price } = data;
 
-        const ticket = Ticket.build({
+        const item = Item.build({
             id,
             title,
             price,
         });
-        await ticket.save();
+        await item.save();
 
         msg.ack();
     }

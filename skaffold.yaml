@@ -25,8 +25,8 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
-    - image: us.gcr.io/ticketing-dev-402015/tickets
-      context: tickets
+    - image: us.gcr.io/ticketing-dev-402015/items
+      context: items
       docker:
         dockerfile: Dockerfile
       sync:

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import {OrderStatus} from "@orionco/common";
-import {TicketDoc} from "./ticket";
+import {ItemDoc} from "./items";
 import {updateIfCurrentPlugin} from "mongoose-update-if-current";
 export {OrderStatus};
 
@@ -8,14 +8,14 @@ interface OrderAttrs {
     userId: string;
     status: OrderStatus;
     expiresAt: Date;
-    ticket: TicketDoc;
+    item: ItemDoc;
 }
 
 interface OrderDoc extends mongoose.Document {
     userId: string;
     status: OrderStatus;
     expiresAt: Date;
-    ticket: TicketDoc;
+    item: ItemDoc;
     version: number;
 }
 
@@ -23,8 +23,7 @@ interface OrderModel extends mongoose.Model<OrderDoc> {
     build(attrs: OrderAttrs): OrderDoc;
 }
 
-const orderSchema = new mongoose.Schema(
-    {
+const orderSchema = new mongoose.Schema({
         userId: {
             type: String,
             required: true,
@@ -38,9 +37,9 @@ const orderSchema = new mongoose.Schema(
         expiresAt: {
             type: mongoose.Schema.Types.Date,
         },
-        ticket: {
+        item: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Ticket',
+            ref: 'Item',
         },
     },
     {

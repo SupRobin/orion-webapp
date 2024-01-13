@@ -28,7 +28,7 @@ spec:
             '2',
             '-SD',
             '-cid',
-            'ticketing-dev'
+            'itemsing-dev'
           ]
 ---
 apiVersion: v1
