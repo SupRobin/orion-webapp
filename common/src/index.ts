@@ -15,13 +15,13 @@ export * from './events/base-publisher';
 export * from './events/subjects';
 export * from './events/item-created-event';
 export * from './events/item-updated-event';
-export * from './events/types/order-status'
+export * from './events/types/order-status';
 export * from './events/order-cancelled-event';
 export * from './events/order-created-event';
 export * from './events/expiration-complete-event';
 export * from './events/payment-created-event';
-
 export * from './events/cart-item-added-event';
 export * from './events/cart-item-removed-event';
 export * from './events/cart-item-updated-event';
 export * from './events/cart-item-cleared-event';
+export * from './events/cart-item-added-event';
