@@ -1,7 +1,7 @@
 import {Subjects} from "./subjects";
 
 export interface CartItemClearedEvent {
-    subject: Subjects.CartItemAdded;
+    subject: Subjects.CartItemCleared;
     data: {
         id: string;
         title: string;
