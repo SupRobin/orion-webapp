@@ -1,30 +1,29 @@
 import mongoose from "mongoose";
 import {Order, OrderStatus} from "./orders";
-import {Item} from "./items";
 import {updateIfCurrentPlugin} from "mongoose-update-if-current";
 
-interface CartAttrs {
+interface ItemAttrs {
     id: string;
-    userId: string
-    items: Item
+    title: string;
+    price: number;
 }
 
-export interface CartDoc extends mongoose.Document {
+export interface ItemDoc extends mongoose.Document {
     title: string;
     price: number;
     version: number;
     isReserved(): Promise<boolean>;
 }
 
-interface CartModel extends mongoose.Model<CartDoc> {
-    build(attrs: CartAttrs): CartDoc;
+interface ItemModel extends mongoose.Model<ItemDoc> {
+    build(attrs: ItemAttrs): ItemDoc;
     findByEvent(event: {
         id: string;
         version: number;
-    }): Promise<CartDoc | null>;
+    }): Promise<ItemDoc | null>;
 }
 
-const cartSchema = new mongoose.Schema(
+const itemSchema = new mongoose.Schema(
     {
         title: {
             type: String,
@@ -46,23 +45,23 @@ const cartSchema = new mongoose.Schema(
     }
 );
 
-cartSchema.set('versionKey', 'version');
-cartSchema.plugin(updateIfCurrentPlugin);
+itemSchema.set('versionKey', 'version');
+itemSchema.plugin(updateIfCurrentPlugin);
 
-cartSchema.statics.findByEvent = (event: { id: string; version: number }) => {
-    return Cart.findOne({
+itemSchema.statics.findByEvent = (event: { id: string; version: number }) => {
+    return Item.findOne({
         _id: event.id,
         version: event.version - 1,
     });
 };
-cartSchema.statics.build = (attrs: CartAttrs) => {
-    return new Cart({
+itemSchema.statics.build = (attrs: ItemAttrs) => {
+    return new Item({
         _id: attrs.id,
         title: attrs.title,
         price: attrs.price,
     });
 };
-cartSchema.methods.isReserved = async function () {
+itemSchema.methods.isReserved = async function () {
     // this === the item document that we just called 'isReserved' on
     const existingOrder = await Order.findOne({
         item: this,
@@ -78,6 +77,6 @@ cartSchema.methods.isReserved = async function () {
     return !!existingOrder;
 };
 
-const Cart = mongoose.model<CartDoc, CartModel>('Cart', cartSchema);
+const Item = mongoose.model<ItemDoc, ItemModel>('Item', itemSchema);
 
-export { Cart };
+export { Item };
