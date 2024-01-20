@@ -1,13 +1,19 @@
 import express, { Request, Response } from 'express';
-import {Item} from "../models/items";
+import {Cart} from "../models/cart";
 
 
 const router = express.Router();
 
 router.get('/api/cart',async (req: Request, res: Response) => {
-    const cart = await Item.find({
-        userId: req.currentUser?.id || req.cookies.id,
-    }).populate('item');
+
+    const cart = await Cart.findOne({
+        //Todo: get session Id from use here before so we can cache his for a day maybe?
+        userId: req.currentUser?.id || req.session
+    }).populate('items.itemId');
+
+    if(!cart){
+        cart.set({items: []})
+    }
 
     res.send(cart);
 });

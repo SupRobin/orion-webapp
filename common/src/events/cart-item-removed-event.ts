@@ -4,11 +4,12 @@ export interface CartItemRemovedEvent {
     subject: Subjects.CartItemRemoved;
     data: {
         id: string;
-        quantity: number
-        item: {
-            title: string,
-        },
         userId: string;
+        items: {
+            itemId: string;
+            quantity: number;
+            price: number;
+        }[];
         version: number;
     };
 }

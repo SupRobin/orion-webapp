@@ -1,14 +1,15 @@
 import {Subjects} from "./subjects";
 
 export interface CartItemAddedEvent {
-    subject: Subjects.CartItemAdded
+    subject: Subjects.CartItemAdded;
     data: {
         id: string;
         userId: string;
-        quantity: number;
-        item: {
-            title: string,
-            price: number,
-        };
+        items: {
+            itemId: string;
+            quantity: number;
+            price: number;
+        }[];
+        version: number;
     };
 }

@@ -4,9 +4,12 @@ export interface CartItemClearedEvent {
     subject: Subjects.CartItemCleared;
     data: {
         id: string;
-        title: string;
-        price: number;
         userId: string;
+        items: {
+            itemId: string;
+            quantity: number;
+            price: number;
+        }[];
         version: number;
     };
 }

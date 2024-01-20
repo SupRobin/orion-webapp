@@ -25,7 +25,7 @@ router.post(
     ],
     validateRequest,
     async (req: Request, res: Response) => {
-        const { itemId } = req.body;
+        const { userId, itemId, quantity, price } = req.body;
 
         // Find the item the user is trying to order in the database
         const item = await Item.findById(itemId);
@@ -55,11 +55,8 @@ router.post(
         // Publish an event saying that an order was created
         await new CartItemAddedPublisher(natsWrapper.client).publish({
             id: order.id,
-            version: order.version,
-            status: order.status,
             userId: order.userId,
-            expiresAt: order.expiresAt.toISOString(),
-            item: {
+            items: {
                 id: item.id,
                 price: item.price
             }

@@ -57,21 +57,6 @@ cartSchema.statics.build = (attrs: CartAttrs) => {
         userId: attrs.userId,
     });
 };
-cartSchema.methods.isReserved = async function () {
-    // this === the cart document that we just called 'isReserved' on
-    const existingOrder = await Order.findOne({
-        cart: this,
-        status: {
-            $in: [
-                OrderStatus.Created,
-                OrderStatus.AwaitingPayment,
-                OrderStatus.Complete,
-            ],
-        },
-    });
-
-    return !!existingOrder;
-};
 
 const Cart = mongoose.model<CartDoc, CartModel>('Cart', cartSchema);
 

@@ -4,12 +4,12 @@ export interface CartItemUpdatedEvent {
     subject: Subjects.CartItemUpdated;
     data: {
         id: string;
-        quantity: number,
-        item: {
-            title: string,
-            price: number
-        }
         userId: string;
+        items: {
+            itemId: string;
+            quantity: number;
+            price: number;
+        }[];
         version: number;
     };
 }
