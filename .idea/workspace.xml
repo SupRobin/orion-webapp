@@ -7,81 +7,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d5a155d-5f6e-41db-b37c-e28fd18cbaac" name="Changes" comment="adding deployments for all services">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-items.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-items.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/tests-items.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tests-items.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+    <list default="true" id="6d5a155d-5f6e-41db-b37c-e28fd18cbaac" name="Changes" comment="updates and some backend configurations changes.">
+      <change afterPath="$PROJECT_DIR$/apples/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apples/src/events/publishers/cart-item-added-publisher.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apples/src/events/publishers/cart.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart/src/events/publishers/cart.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orders/src/models/cart.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/auth/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/auth/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/api/build-client.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/api/build-client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/orders/[orderId].js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/orders/[orderId].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/orders/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/orders/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/tickets/[ticketId].js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/tickets/[ticketId].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/tickets/new.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/tickets/new.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/cart/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cart/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/events/publishers/cart-item-added-publisher.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/events/publishers/cart-item-cleared-publisher.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/events/publishers/cart-item-removed-publisher.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/events/publishers/cart-item-updated-publisher.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/models/items.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/models/orders.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cart/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/routes/add.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/routes/clear.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/routes/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/routes/remove.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/routes/update.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/cart/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/expiration/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/expiration/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8's-dev/ingress-srv.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8's-dev/ingress-srv.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s-prod/ingress-src.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s-prod/ingress-src.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s/ingress-srv.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/ingress-srv.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s/nats-depl.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/nats-depl.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s/tickets-depl.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/tickets-depl.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s/tickets-mongo-depl.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/tickets-mongo-depl.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/k8s/cart-depl.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/cart-depl.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/items/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/items/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orders/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/orders/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/events/listeners/__test__/expiration-complete-listener.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/events/listeners/__test__/expiration-complete-listener.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/events/listeners/__test__/item-created-listener.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/events/listeners/__test__/item-created-listener.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/events/listeners/__test__/item-updated-listener.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/events/listeners/__test__/item-updated-listener.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/events/listeners/expiration-complete-listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/events/listeners/expiration-complete-listener.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/events/listeners/item-created-listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/events/listeners/item-created-listener.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/events/listeners/item-updated-listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/events/listeners/item-updated-listener.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/models/items.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/models/items.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/models/order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/models/order.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/routes/__test__/delete.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/__test__/delete.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/routes/__test__/index.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/__test__/index.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/routes/__test__/new.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/__test__/new.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/routes/__test__/show.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/__test__/show.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/routes/delete.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/delete.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/routes/new.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/new.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/routes/show.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/show.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/orders/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/payments/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/payments/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payments/src/events/listeners/__test__/order-cancelled-listener.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/payments/src/events/listeners/__test__/order-cancelled-listener.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payments/src/events/listeners/__test__/order-created-listener.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/payments/src/events/listeners/__test__/order-created-listener.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payments/src/events/listeners/order-created-listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/payments/src/events/listeners/order-created-listener.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skaffold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/skaffold.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/next.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/__mocks__/nats-wrapper.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/app.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/events/listeners/__test__/order-cancelled-listener.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/events/listeners/__test__/order-created-listener.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/events/listeners/order-cancelled-listener.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/events/listeners/order-created-listener.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/events/listeners/queue-group-name.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/events/publishers/item-created-publisher.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/events/publishers/item-updated-publisher.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/models/__test__/ticket.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/models/items.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/nats-wrapper.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/__test__/index.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/__test__/new.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/__test__/show.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/__test__/update.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/new.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/show.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/routes/updates.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/src/test/setup.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tickets/tsconfig.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +53,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SupRobin&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="c7717d26-845a-45c3-b36f-e52c3e9d9f7a" />
+        <option name="url" value="https://github.com/SupRobin/ticketing.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="KubernetesApiProvider">{
   &quot;contexts&quot;: [
@@ -133,7 +103,7 @@
     "WHITESOURCE_PRECOMMIT_ANALYSIS": "false",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/fnxmw6c6yp/Microscervices/ticketing/common/src/events",
+    "last_opened_file_path": "/Users/fnxmw6c6yp/Microscervices/ticketing/apples/src/events/publishers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -149,16 +119,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apples/src/events/publishers" />
+      <recent name="$PROJECT_DIR$/apples/src" />
+      <recent name="$PROJECT_DIR$/apples" />
+      <recent name="$PROJECT_DIR$/common/src" />
       <recent name="$PROJECT_DIR$/common/src/events" />
-      <recent name="$PROJECT_DIR$/tickets/src" />
-      <recent name="$PROJECT_DIR$/tickets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apples/src" />
+      <recent name="$PROJECT_DIR$/apples" />
+      <recent name="$PROJECT_DIR$/cart/src" />
+      <recent name="$PROJECT_DIR$/cart/events" />
       <recent name="$PROJECT_DIR$/client" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/common/src" />
-      <recent name="$PROJECT_DIR$/auth/src/routes/__test__" />
-      <recent name="$PROJECT_DIR$/auth/src/middlewares" />
     </key>
   </component>
   <component name="RunManager" selected="npm.pub">
@@ -248,7 +220,17 @@
       <workItem from="1704914470255" duration="270000" />
       <workItem from="1705002865486" duration="621000" />
       <workItem from="1705160251096" duration="3968000" />
-      <workItem from="1705164932002" duration="1484000" />
+      <workItem from="1705164932002" duration="8657000" />
+      <workItem from="1705174953687" duration="804000" />
+      <workItem from="1705175771533" duration="302000" />
+      <workItem from="1705176087722" duration="253000" />
+      <workItem from="1705176352423" duration="313000" />
+      <workItem from="1705255772862" duration="5021000" />
+      <workItem from="1705431045456" duration="3000" />
+      <workItem from="1705763853697" duration="474000" />
+      <workItem from="1705764789601" duration="850000" />
+      <workItem from="1705765672543" duration="51000" />
+      <workItem from="1705765983232" duration="203000" />
     </task>
     <task id="LOCAL-00001" summary="updates">
       <option name="closed" value="true" />
@@ -298,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703964008343</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="updates and some backend configurations changes.">
+      <option name="closed" value="true" />
+      <created>1705167555778</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1705167555778</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +299,7 @@
     <MESSAGE value="updates" />
     <MESSAGE value="finally works 100%" />
     <MESSAGE value="adding deployments for all services" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding deployments for all services" />
+    <MESSAGE value="updates and some backend configurations changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="updates and some backend configurations changes." />
   </component>
 </project>
