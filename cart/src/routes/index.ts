@@ -12,7 +12,7 @@ router.get('/api/cart',async (req: Request, res: Response) => {
     }).populate('items.itemId');
 
     if(!cart){
-        cart.set({items: []})
+        cart!.set({items: []})
     }
 
     res.send(cart);
