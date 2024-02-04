@@ -15,7 +15,6 @@ const EXPIRATION_WINDOW_SECONDS =  60;
 //TODO: change logic here for the cart system. (it is acutally orders logic)
 router.post(
     '/api/cart',
-    requireAuth,
     [
         body('itemId')
             .not()
@@ -23,12 +22,13 @@ router.post(
             .custom((input: string) => mongoose.Types.ObjectId.isValid(input))
             .withMessage('ItemId must be provided')
     ],
+    requireAuth,
     validateRequest,
     async (req: Request, res: Response) => {
         const { userId, itemId, quantity, price } = req.body;
 
         // Find the item the user is trying to order in the database
-        const item = await Item.findById(itemId);
+        const {item} = await Item.findById(itemId);
         if (!item) {
             throw new NotFoundError();
         }
@@ -56,10 +56,12 @@ router.post(
         await new CartItemAddedPublisher(natsWrapper.client).publish({
             id: order.id,
             userId: order.userId,
-            items: {
+            quantity: quantity,
+            item: {
                 id: item.id,
+                title: item.title,
                 price: item.price
-            }
+            },
         });
 
         res.status(201).send(order);

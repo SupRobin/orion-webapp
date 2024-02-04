@@ -28,7 +28,7 @@ spec:
             '2',
             '-SD',
             '-cid',
-            'itemsing-dev'
+            'orion-webapp'
           ]
 ---
 apiVersion: v1

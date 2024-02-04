@@ -11,7 +11,7 @@ export class OrderCancelledListener extends Listener<OrderCancelledEvent> {
 
     async onMessage(data: OrderCancelledEvent["data"], msg: Message) {
         // Find the item that the order is reserving
-        const item = await Item.findById(data.item.id);
+        const {item} = await Item.findById(data.item.id);
         //if no item, throw Error
         if (!item) {
             throw Error('Item not found');

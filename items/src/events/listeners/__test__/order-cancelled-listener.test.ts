@@ -39,7 +39,7 @@ it('updates the item publishes an event and acks the message', async () => {
 
     await listener.onMessage(data, msg);
 
-    const updatedItem = await Item.findById(item.id);
+    const {updatedItem} = await Item.findById(item.id);
 
     expect(updatedItem!.orderId).not.toBeDefined();
     expect(msg.ack).toHaveBeenCalled();

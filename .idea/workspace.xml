@@ -7,38 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d5a155d-5f6e-41db-b37c-e28fd18cbaac" name="Changes" comment="updates and some backend configurations changes.">
-      <change afterPath="$PROJECT_DIR$/apples/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apples/src/events/publishers/cart-item-added-publisher.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apples/src/events/publishers/cart.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/src/events/publishers/cart.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/src/models/cart.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/auth/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/auth/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/cart/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cart/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/events/publishers/cart-item-added-publisher.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/events/publishers/cart-item-cleared-publisher.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/events/publishers/cart-item-removed-publisher.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/events/publishers/cart-item-updated-publisher.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/models/items.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/models/orders.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cart/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/routes/add.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/routes/clear.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/routes/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/routes/remove.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/routes/update.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/cart/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expiration/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/expiration/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/k8s/cart-depl.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/k8s/cart-depl.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/items/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/items/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/orders/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payments/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/payments/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="6d5a155d-5f6e-41db-b37c-e28fd18cbaac" name="Changes" comment="updates and some backend configurations changes." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,30 +62,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ShowUsagesActions.previewPropertyKey": "true",
-    "WHITESOURCE_PRECOMMIT_ANALYSIS": "false",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/fnxmw6c6yp/Microscervices/ticketing/apples/src/events/publishers",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/fnxmw6c6yp/Microscervices/ticketing/tickets/node_modules/jest",
-    "nodejs_package_manager_path": "npm",
-    "npm.build.executor": "Run",
-    "npm.clean.executor": "Run",
-    "npm.pub.executor": "Run",
-    "ts.external.directory.path": "/Users/fnxmw6c6yp/Microscervices/ticketing/items/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ShowUsagesActions.previewPropertyKey&quot;: &quot;true&quot;,
+    &quot;WHITESOURCE_PRECOMMIT_ANALYSIS&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Flavio/Documents/Webstorm_Projects/orion-webapp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/fnxmw6c6yp/Microscervices/ticketing/tickets/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.clean.executor&quot;: &quot;Run&quot;,
+    &quot;npm.pub.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/fnxmw6c6yp/Microscervices/ticketing/items/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/apples/src/events/publishers" />
@@ -231,6 +201,10 @@
       <workItem from="1705764789601" duration="850000" />
       <workItem from="1705765672543" duration="51000" />
       <workItem from="1705765983232" duration="203000" />
+      <workItem from="1706937020066" duration="1495000" />
+      <workItem from="1706995071358" duration="5202000" />
+      <workItem from="1707007902922" duration="4290000" />
+      <workItem from="1707021551571" duration="6573000" />
     </task>
     <task id="LOCAL-00001" summary="updates">
       <option name="closed" value="true" />

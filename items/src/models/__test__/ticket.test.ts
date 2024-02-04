@@ -13,8 +13,8 @@ it('implements optimistic concurrency control', async () => {
     //save the item to the database
 
     //fetch the item twice
-    const firstInstance = await Item.findById(item.id)
-    const secondInstance = await Item.findById(item.id)
+    const {firstInstance} = await Item.findById(item.id)
+    const {secondInstance} = await Item.findById(item.id)
     //make two separate changes to the item we fetched
     firstInstance!.set({price: 10});
     secondInstance!.set({price: 15});

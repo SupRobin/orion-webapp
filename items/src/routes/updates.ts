@@ -1,11 +1,6 @@
 import express, {Request, Response} from "express";
 import {body} from "express-validator";
-import {
-    validateRequest,
-    NotFoundError,
-    requireAuth,
-    NotAuthorizedError, BadRequestError
-} from "@orionco/common";
+import {BadRequestError, NotAuthorizedError, NotFoundError, requireAuth, validateRequest} from "@orionco/common";
 import {Item} from "../models/items";
 import {ItemUpdatedPublisher} from "../events/publishers/item-updated-publisher";
 import {natsWrapper} from "../nats-wrapper";
@@ -13,23 +8,22 @@ import {natsWrapper} from "../nats-wrapper";
 const router = express.Router()
 
 router.put(
-    '/api/items/:id',
-    requireAuth,
-    [
+    '/api/items/:id', [
         body('title').not().isEmpty().withMessage('Title is required'),
         body('price')
-            .isFloat({ gt: 0 })
+            .isFloat({gt: 0})
             .withMessage('Price must be provided and must be greater than 0'),
     ],
+    requireAuth,
     validateRequest,
     async (req: Request, res: Response) => {
-        const item = await Item.findById(req.params.id);
+        const {item} = await Item.findById(req.params.id);
 
         if (!item) {
             throw new NotFoundError();
         }
 
-        if(item.orderId){
+        if (item.orderId) {
             throw new BadRequestError("Cannot edit a reserved item");
         }
 
@@ -55,4 +49,4 @@ router.put(
     }
 );
 
-export { router as updateItemRouter };
+export {router as updateItemRouter};

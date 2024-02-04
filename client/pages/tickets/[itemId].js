@@ -1,7 +1,7 @@
 import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 
-const itemshow = ({item}) => {
+const itemShow = ({item}) => {
     const {doRequest, errors} = useRequest({
         url: '/api/orders',
         method: 'post',

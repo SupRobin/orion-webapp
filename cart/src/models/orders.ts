@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {IfAny, Query} from "mongoose";
 import {OrderStatus} from "@orionco/common";
 import {ItemDoc} from "./items";
 import {updateIfCurrentPlugin} from "mongoose-update-if-current";
@@ -20,7 +20,18 @@ interface OrderDoc extends mongoose.Document {
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
-    build(attrs: OrderAttrs): OrderDoc;
+    build(attrs: {
+        item: Query<(Document<unknown, {}, ItemDoc> & ItemDoc extends { _id?: infer U } ? IfAny<U, ItemDoc & {
+            _id: Types.ObjectId
+        }, ItemDoc & Required<{ _id: U }>> : (ItemDoc & {
+            _id: Types.ObjectId
+        })) | null, Document<unknown, {}, ItemDoc> & ItemDoc extends { _id?: infer U } ? IfAny<U, ItemDoc & {
+            _id: Types.ObjectId
+        }, ItemDoc & Required<{ _id: U }>> : (ItemDoc & { _id: Types.ObjectId }), {}, ItemDoc, "findOne"> & {};
+        userId: string;
+        expiresAt: Date;
+        status: OrderStatus
+    }): OrderDoc;
 }
 
 const orderSchema = new mongoose.Schema({

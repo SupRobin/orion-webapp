@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: items
-          image: us.gcr.io/ticketing-dev-402015/items
+          image: us.gcr.io/orion-413223/items
           env:
             - name: NATS_CLIENT_ID
               valueFrom:
@@ -23,7 +23,7 @@ spec:
             - name: NATS_URL
               value: 'http://nats-srv:4222'
             - name: NATS_CLUSTER_ID
-              value: ticketing-dev
+              value: orion-webapp
             - name: MONGO_URI
               value: 'mongodb://items-mongo-srv:27017/items'
             - name: JWT_KEY

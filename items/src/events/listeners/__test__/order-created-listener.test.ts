@@ -45,7 +45,7 @@ it('sets the user id of the item', async () => {
 
     await listener.onMessage(data, msg);
 
-    const updatedItem = await Item.findById(item.id);
+    const {updatedItem} = await Item.findById(item.id);
 
     expect(updatedItem!.orderId).toEqual(data.id);
 });
