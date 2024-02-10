@@ -9,8 +9,8 @@ export class PaymentCreatedListener extends Listener<PaymentCreatedEvent> {
     subject: Subjects.PaymentCreated = Subjects.PaymentCreated;
 
     async onMessage(data: PaymentCreatedEvent['data'], msg: Message) {
-        const cart = await Cart.findById(data.id).populate('cart')
-        cart?.set({items: []});
+        const cart = await Cart.findById(data.id).populate('items')
+        cart.set({items: []});
 
         msg.ack();
     }

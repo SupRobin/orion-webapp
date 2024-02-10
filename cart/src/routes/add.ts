@@ -28,7 +28,7 @@ router.post(
         const { userId, itemId, quantity, price } = req.body;
 
         // Find the item the user is trying to order in the database
-        const {item} = await Item.findById(itemId);
+        const item = await Item.findById(itemId);
         if (!item) {
             throw new NotFoundError();
         }

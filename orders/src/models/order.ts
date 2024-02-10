@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Document, IfAny, Query, Types} from "mongoose";
 import {OrderStatus} from "@orionco/common";
 import {ItemDoc} from "./items";
 import {updateIfCurrentPlugin} from "mongoose-update-if-current";
@@ -20,7 +20,7 @@ interface OrderDoc extends mongoose.Document {
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
-    build(attrs: OrderAttrs): OrderDoc;
+    build(attrs: { item: ItemDoc; userId: string; expiresAt: Date; status: OrderStatus }): OrderDoc;
 }
 
 const orderSchema = new mongoose.Schema({

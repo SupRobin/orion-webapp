@@ -141,7 +141,7 @@ it('rejects update of the item is reserved ', async () => {
             title: 'asldkfj',
             price: 20,
         });
-    const {item} = await Item.findById(response.body.id);
+    const item = await Item.findById(response.body.id);
     item!.set({orderId: new mongoose.Types.ObjectId().toHexString()});
     await item!.save();
 

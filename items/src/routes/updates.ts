@@ -17,7 +17,7 @@ router.put(
     requireAuth,
     validateRequest,
     async (req: Request, res: Response) => {
-        const {item} = await Item.findById(req.params.id);
+        const item = await Item.findById(req.params.id);
 
         if (!item) {
             throw new NotFoundError();

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import express, {Request, Response} from "express";
 import {BadRequestError, NotFoundError, OrderStatus, requireAuth, validateRequest} from "@orionco/common";
 import {body} from "express-validator";
-import {Item} from "../models/items";
+import {Item} from '../models/items'
 import {Order} from "../models/order";
 import {OrderCreatedPublisher} from "../events/publishers/order-created-publisher";
 import {natsWrapper} from "../nats-wrapper";
@@ -23,10 +23,10 @@ router.post(
     requireAuth,
     validateRequest,
     async (req: Request, res: Response) => {
-        const { itemId } = req.body;
+        const {itemId} = req.body;
 
         // Find the item the user is trying to order in the database
-        const {item} = await Item.findById(itemId);
+        const item = await Item.findById(itemId);
         if (!item) {
             throw new NotFoundError();
         }
@@ -46,7 +46,7 @@ router.post(
             userId: req.currentUser!.id,
             status: OrderStatus.Created,
             expiresAt: expiration,
-            item
+            item: item
         });
         await order.save();
 
