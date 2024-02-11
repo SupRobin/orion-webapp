@@ -1,13 +1,13 @@
-import { Subjects } from './subjects';
+import { Subjects } from './subjects'
 
 export interface ItemUpdatedEvent {
-    subject: Subjects.ItemUpdated;
+    subject: Subjects.ItemUpdated
     data: {
-        id: string;
-        version: number;
-        title: string;
-        price: number;
-        userId: string;
-        orderId?: string;
-    };
+        id: string
+        version: number
+        title: string
+        price: number
+        userId: string
+        orderId?: string
+    }
 }

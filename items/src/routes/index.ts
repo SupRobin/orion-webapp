@@ -1,12 +1,12 @@
-import express, {Request, Response} from "express";
-import { Item} from "../models/items";
+import express, { Request, Response } from 'express'
+import { Item } from '../models/items'
 
-const router = express.Router();
+const router = express.Router()
 
 router.get('/api/items/', async (req: Request, res: Response) => {
-    const items = await Item.find({});
+    const items = await Item.find({})
 
-    res.send(items);
-});
+    res.send(items)
+})
 
-export { router as indexItemRouter };
+export { router as indexItemRouter }

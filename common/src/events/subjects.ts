@@ -2,8 +2,7 @@ export enum Subjects {
     ItemCreated = 'item:created',
     ItemUpdated = 'item:updated',
 
-
-    OrderCreated= 'order:created',
+    OrderCreated = 'order:created',
     OrderCancelled = 'order:cancelled',
     OrderCompleted = 'order:completed',
 
@@ -11,7 +10,7 @@ export enum Subjects {
 
     PaymentCreated = 'payment:created',
 
-    CartItemAdded  = 'cart:added',
+    CartItemAdded = 'cart:added',
     CartItemRemoved = 'cart:removed',
     CartItemCleared = 'cart:cleared',
     CartItemUpdated = 'cart:updated',

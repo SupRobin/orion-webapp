@@ -1,17 +1,17 @@
-import request from 'supertest';
-import { app } from '../../app';
-import mongoose from 'mongoose';
-import { natsWrapper } from '../../nats-wrapper';
+import request from 'supertest'
+import { app } from '../../app'
+import mongoose from 'mongoose'
+import { natsWrapper } from '../../nats-wrapper'
 
 it('returns a 404 if the item is not found', async () => {
-    const id = new mongoose.Types.ObjectId().toHexString();
+    const id = new mongoose.Types.ObjectId().toHexString()
 
-    await request(app).get(`/api/items/${id}`).send().expect(404);
-});
+    await request(app).get(`/api/items/${id}`).send().expect(404)
+})
 
 it('returns the item if the item is found', async () => {
-    const title = 'concert';
-    const price = 20;
+    const title = 'concert'
+    const price = 20
 
     const response = await request(app)
         .post('/api/items')
@@ -20,13 +20,10 @@ it('returns the item if the item is found', async () => {
             title,
             price,
         })
-        .expect(201);
+        .expect(201)
 
-    const itemResponse = await request(app)
-        .get(`/api/items/${response.body.id}`)
-        .send()
-        .expect(200);
+    const itemResponse = await request(app).get(`/api/items/${response.body.id}`).send().expect(200)
 
-    expect(itemResponse.body.title).toEqual(title);
-    expect(itemResponse.body.price).toEqual(price);
-});
+    expect(itemResponse.body.title).toEqual(title)
+    expect(itemResponse.body.price).toEqual(price)
+})

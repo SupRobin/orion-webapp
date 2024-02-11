@@ -1,8 +1,8 @@
-import Router from 'next/router';
-import useRequest from '../../hooks/use-request';
+import Router from 'next/router'
+import useRequest from '../../hooks/use-request'
 
-const itemShow = ({item}) => {
-    const {doRequest, errors} = useRequest({
+const itemShow = ({ item }) => {
+    const { doRequest, errors } = useRequest({
         url: '/api/orders',
         method: 'post',
         body: {
@@ -10,26 +10,26 @@ const itemShow = ({item}) => {
         },
         onSuccess: (order) => {
             Router.push('/orders/[orderId]', `/orders/${order.id}`)
-        }
-    });
+        },
+    })
 
     return (
         <div>
             <h1>{item.title}</h1>
             <h4>Price: {item.price}</h4>
             {errors}
-            <button onClick={() => doRequest()} className="btn btn-primary">
+            <button onClick={() => doRequest()} className='btn btn-primary'>
                 Purchase
             </button>
         </div>
-    );
-};
+    )
+}
 
 itemShow.getInitialProps = async (context, client) => {
-    const {itemId} = context.query;
-    const {data} = await client.get(`/api/items/${itemId}`);
+    const { itemId } = context.query
+    const { data } = await client.get(`/api/items/${itemId}`)
 
-    return {item: data};
-};
+    return { item: data }
+}
 
-export default itemShow;
+export default itemShow

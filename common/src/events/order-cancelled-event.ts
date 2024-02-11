@@ -1,14 +1,14 @@
-import {Subjects} from "./subjects"
+import { Subjects } from './subjects'
 
 //do you want to share the max or minimum. we may want to add the price of the thing.
 export interface OrderCancelledEvent {
-    subject: Subjects.OrderCancelled;
+    subject: Subjects.OrderCancelled
     data: {
-        id: string;
-        version: number;
+        id: string
+        version: number
         items: {
-            id: string;
-            quantity: number,
-        }[];
+            id: string
+            quantity: number
+        }[]
     }
 }

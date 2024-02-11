@@ -6,19 +6,14 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-exports.id = "vendor-chunks/bootstrap";
-exports.ids = ["vendor-chunks/bootstrap"];
+exports.id = 'vendor-chunks/bootstrap'
+exports.ids = ['vendor-chunks/bootstrap']
 exports.modules = {
-
-/***/ "./node_modules/bootstrap/dist/css/bootstrap.css":
-/*!*******************************************************!*\
+    /***/ './node_modules/bootstrap/dist/css/bootstrap.css':
+        /*!*******************************************************!*\
   !*** ./node_modules/bootstrap/dist/css/bootstrap.css ***!
   \*******************************************************/
-/***/ (() => {
-
-
-
-/***/ })
-
-};
-;
+        /***/ () => {
+            /***/
+        },
+}

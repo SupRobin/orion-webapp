@@ -1,29 +1,30 @@
-import mongoose, {Document, IfAny, Query, Types} from "mongoose";
-import {OrderStatus} from "@orionco/common";
-import {ItemDoc} from "./items";
-import {updateIfCurrentPlugin} from "mongoose-update-if-current";
-export {OrderStatus};
+import mongoose, { Document, IfAny, Query, Types } from 'mongoose'
+import { OrderStatus } from '@orionco/common'
+import { ItemDoc } from './items'
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current'
+export { OrderStatus }
 
 interface OrderAttrs {
-    userId: string;
-    status: OrderStatus;
-    expiresAt: Date;
-    item: ItemDoc;
+    userId: string
+    status: OrderStatus
+    expiresAt: Date
+    item: ItemDoc
 }
 
 interface OrderDoc extends mongoose.Document {
-    userId: string;
-    status: OrderStatus;
-    expiresAt: Date;
-    item: ItemDoc;
-    version: number;
+    userId: string
+    status: OrderStatus
+    expiresAt: Date
+    item: ItemDoc
+    version: number
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
-    build(attrs: { item: ItemDoc; userId: string; expiresAt: Date; status: OrderStatus }): OrderDoc;
+    build(attrs: { item: ItemDoc; userId: string; expiresAt: Date; status: OrderStatus }): OrderDoc
 }
 
-const orderSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema(
+    {
         userId: {
             type: String,
             required: true,
@@ -45,20 +46,20 @@ const orderSchema = new mongoose.Schema({
     {
         toJSON: {
             transform(doc, ret) {
-                ret.id = ret._id;
-                delete ret._id;
+                ret.id = ret._id
+                delete ret._id
             },
         },
     }
-);
+)
 
-orderSchema.set('versionKey', 'version');
-orderSchema.plugin(updateIfCurrentPlugin);
+orderSchema.set('versionKey', 'version')
+orderSchema.plugin(updateIfCurrentPlugin)
 
 orderSchema.statics.build = (attrs: OrderAttrs) => {
-    return new Order(attrs);
-};
+    return new Order(attrs)
+}
 
-const Order = mongoose.model<OrderDoc, OrderModel>('Order', orderSchema);
+const Order = mongoose.model<OrderDoc, OrderModel>('Order', orderSchema)
 
-export { Order };
+export { Order }

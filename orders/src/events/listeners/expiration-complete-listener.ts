@@ -1,39 +1,36 @@
-
-import {Listener, Subjects, ExpirationCompleteEvent, OrderStatus} from "@orionco/common";
-import {Message} from "node-nats-streaming";
-import {Order} from "../../models/order";
-import {queuegroupname} from './queuegroupname'
-import {OrderCancelledPublisher} from "../publishers/order-cancelled-publisher";
-
-
+import { Listener, Subjects, ExpirationCompleteEvent, OrderStatus } from '@orionco/common'
+import { Message } from 'node-nats-streaming'
+import { Order } from '../../models/order'
+import { queuegroupname } from './queuegroupname'
+import { OrderCancelledPublisher } from '../publishers/order-cancelled-publisher'
 
 export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent> {
-    queueGroupName = queuegroupname;
-    subject: Subjects.ExpirationComplete = Subjects.ExpirationComplete;
+    queueGroupName = queuegroupname
+    subject: Subjects.ExpirationComplete = Subjects.ExpirationComplete
 
     async onMessage(data: ExpirationCompleteEvent['data'], msg: Message) {
-        const order = await Order.findById(data.orderId).populate('item');
+        const order = await Order.findById(data.orderId).populate('item')
 
         if (!order) {
-            throw new Error('Order not found');
+            throw new Error('Order not found')
         }
 
         if (order.status === OrderStatus.Complete) {
-            return msg.ack();
+            return msg.ack()
         }
 
         order.set({
             status: OrderStatus.Cancelled,
-        });
-        await order.save();
+        })
+        await order.save()
         await new OrderCancelledPublisher(this.client).publish({
             id: order.id,
             version: order.version,
             item: {
                 id: order.item.id,
             },
-        });
+        })
 
-        msg.ack();
+        msg.ack()
     }
 }

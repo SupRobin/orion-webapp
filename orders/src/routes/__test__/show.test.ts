@@ -1,7 +1,7 @@
-import request from "supertest";
-import {app} from "../../app";
-import {Item} from "../../models/item";
-import mongoose from "mongoose";
+import request from 'supertest'
+import { app } from '../../app'
+import { Item } from '../../models/item'
+import mongoose from 'mongoose'
 
 it('fetches the order', async () => {
     //Create item
@@ -12,13 +12,13 @@ it('fetches the order', async () => {
     })
     await item.save()
 
-    const user = global.signin();
+    const user = global.signin()
     //make request to build an order with this item
-    const {body: order} = await request(app)
+    const { body: order } = await request(app)
         .post('/api/orders')
         .set('Cookie', user)
-        .send({itemId: item.id})
-        .expect(201);
+        .send({ itemId: item.id })
+        .expect(201)
 
     //make request to fetch the order
 
@@ -28,11 +28,7 @@ it('fetches the order', async () => {
         .send()
         .expect(404)
 
-    await request(app)
-        .post('/api/orders')
-        .set('Cookie', user)
-        .send({item: item.id})
-        .expect(400);
+    await request(app).post('/api/orders').set('Cookie', user).send({ item: item.id }).expect(400)
 
     // expect(fetchedOrder.id).toEqual(order.id);
-});
+})

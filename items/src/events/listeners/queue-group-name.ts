@@ -1,1 +1,1 @@
-export const queueGroupName = 'items-service';
+export const queueGroupName = 'items-service'

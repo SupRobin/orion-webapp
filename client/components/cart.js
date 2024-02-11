@@ -1,47 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-const CartShow = ({order, currentUser}) => {
-    const [items, ]
-        this.state = {
-            items: [],
-        };
+const CartShow = ({ order, currentUser }) => {
+    const [cartItems, setCartItems] = useState([
+        { id: '1', name: 'Fake Item', quantity: 1, price: 100 },
+        { id: '2', name: 'Fake Item 2', quantity: 2, price: 200 },
+    ])
 
-
-    // Add an item to the cart
-    addItem(item) {
-        this.setState((prevState) => ({
-            items: [...prevState.items, item],
-        }));
+    const addItem = (id) => {
+        const newCartItems = cartItems.map((item) => {
+            if (item.id === id) {
+                return { ...item, quantity: item.quantity + 1 }
+            }
+            return item
+        })
+        setCartItems(newCartItems)
     }
 
-    // Remove an item from the cart
-    removeItem(itemId) {
-        this.setState((prevState) => ({
-            items: prevState.items.filter((item) => item.id !== itemId),
-        }));
+    const removeItem = (itemId) => {
+        const newCartItems = cartItems.filter((item) => item.id !== itemId)
+        setCartItems(newCartItems)
     }
 
-    // Calculate the total price of items in the cart
-    calculateTotal() {
-        return this.state.items.reduce((total, item) => total + item.price, 0);
+    const calculateTotal = () => {
+        return this.state.items.reduce((total, cartItems) => total + cartItems.price, 0)
     }
 
-    render() {
-        return (
-            <div>
-                <h2>Shopping Cart</h2>
-                <ul>
-                    {this.state.items.map((item) => (
-                        <li key={item.id}>
-                            {item.name} - ${item.price}
-                            <button onClick={() => this.removeItem(item.id)}>Remove</button>
-                        </li>
-                    ))}
-                </ul>
-                <p>Total: ${this.calculateTotal()}</p>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h2>Shopping Cart</h2>
+            <ul>
+                {this.state.items.map((item) => (
+                    <li key={item.title}>
+                        {item.title} - ${item.price} - ${item.quantity}
+                        <button onClick={() => removeItem(item.id)}>Remove</button>
+                        <button onClick={() => addItem(item.id)}>+</button>
+                    </li>
+                ))}
+            </ul>
+            <p>Total: ${calculateTotal()}</p>
+        </div>
+    )
 }
 
-export default Cart;
+export default CartShow

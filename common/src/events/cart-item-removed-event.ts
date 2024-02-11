@@ -1,15 +1,15 @@
-import {Subjects} from "./subjects";
+import { Subjects } from './subjects'
 
 export interface CartItemRemovedEvent {
-    subject: Subjects.CartItemRemoved;
+    subject: Subjects.CartItemRemoved
     data: {
-        id: string;
-        userId: string;
+        id: string
+        userId: string
         items: {
-            itemId: string;
-            quantity: number;
-            price: number;
-        }[];
-        version: number;
-    };
+            itemId: string
+            quantity: number
+            price: number
+        }[]
+        version: number
+    }
 }

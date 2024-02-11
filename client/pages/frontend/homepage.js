@@ -1,10 +1,7 @@
-import {useState} from "react";
-import Router from 'next/router';
+import { useState } from 'react'
+import Router from 'next/router'
 const homePage = () => {
-    return (
-        <h1> This is the homePage. </h1>
-    );
-};
+    return <h1> This is the homePage. </h1>
+}
 
-
-export default homePage;
+export default homePage

@@ -1,62 +1,62 @@
 apiVersion: skaffold/v4beta3
 kind: config
 manifests:
-  rawYaml:
-    - ./infra/k8s/*
+    rawYaml:
+        - ./infra/k8s/*
 build:
-#  local:
-#    push: false
-  googleCloudBuild:
-    projectId: orion-413223
-  artifacts:
-    - image: us.gcr.io/orion-413223/auth
-      context: auth
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: us.gcr.io/orion-413223/client
-      context: client
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: '**/*.js'
-            dest: .
-    - image: us.gcr.io/orion-413223/items
-      context: items
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: us.gcr.io/orion-413223/expiration
-      context: expiration
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: us.gcr.io/orion-413223/payments
-      context: payments
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: us.gcr.io/orion-413223/orders
-      context: orders
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
+    #  local:
+    #    push: false
+    googleCloudBuild:
+        projectId: orion-413223
+    artifacts:
+        - image: us.gcr.io/orion-413223/auth
+          context: auth
+          docker:
+              dockerfile: Dockerfile
+          sync:
+              manual:
+                  - src: 'src/**/*.ts'
+                    dest: .
+        - image: us.gcr.io/orion-413223/client
+          context: client
+          docker:
+              dockerfile: Dockerfile
+          sync:
+              manual:
+                  - src: '**/*.js'
+                    dest: .
+        - image: us.gcr.io/orion-413223/items
+          context: items
+          docker:
+              dockerfile: Dockerfile
+          sync:
+              manual:
+                  - src: 'src/**/*.ts'
+                    dest: .
+        - image: us.gcr.io/orion-413223/expiration
+          context: expiration
+          docker:
+              dockerfile: Dockerfile
+          sync:
+              manual:
+                  - src: 'src/**/*.ts'
+                    dest: .
+        - image: us.gcr.io/orion-413223/payments
+          context: payments
+          docker:
+              dockerfile: Dockerfile
+          sync:
+              manual:
+                  - src: 'src/**/*.ts'
+                    dest: .
+        - image: us.gcr.io/orion-413223/orders
+          context: orders
+          docker:
+              dockerfile: Dockerfile
+          sync:
+              manual:
+                  - src: 'src/**/*.ts'
+                    dest: .
 #    - image: us.gcr.io/orion-413223/cart
 #      context: orders
 #      docker:

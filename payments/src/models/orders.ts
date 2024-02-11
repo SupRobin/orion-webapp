@@ -1,24 +1,24 @@
-import mongoose from 'mongoose';
-import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
-import { OrderStatus } from '@orionco/common';
+import mongoose from 'mongoose'
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current'
+import { OrderStatus } from '@orionco/common'
 
 interface OrderAttrs {
-    id: string;
-    version: number;
-    userId: string;
-    price: number;
-    status: OrderStatus;
+    id: string
+    version: number
+    userId: string
+    price: number
+    status: OrderStatus
 }
 
 interface OrderDoc extends mongoose.Document {
-    version: number;
-    userId: string;
-    price: number;
-    status: OrderStatus;
+    version: number
+    userId: string
+    price: number
+    status: OrderStatus
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
-    build(attrs: OrderAttrs): OrderDoc;
+    build(attrs: OrderAttrs): OrderDoc
 }
 
 const orderSchema = new mongoose.Schema(
@@ -39,15 +39,15 @@ const orderSchema = new mongoose.Schema(
     {
         toJSON: {
             transform(doc, ret) {
-                ret.id = ret._id;
-                delete ret._id;
+                ret.id = ret._id
+                delete ret._id
             },
         },
     }
-);
+)
 
-orderSchema.set('versionKey', 'version');
-orderSchema.plugin(updateIfCurrentPlugin);
+orderSchema.set('versionKey', 'version')
+orderSchema.plugin(updateIfCurrentPlugin)
 
 orderSchema.statics.build = (attrs: OrderAttrs) => {
     return new Order({
@@ -56,9 +56,9 @@ orderSchema.statics.build = (attrs: OrderAttrs) => {
         price: attrs.price,
         userId: attrs.userId,
         status: attrs.status,
-    });
-};
+    })
+}
 
-const Order = mongoose.model<OrderDoc, OrderModel>('Order', orderSchema);
+const Order = mongoose.model<OrderDoc, OrderModel>('Order', orderSchema)
 
-export { Order };
+export { Order }

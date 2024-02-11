@@ -1,15 +1,15 @@
-import {Subjects} from "./subjects";
+import { Subjects } from './subjects'
 
 export interface CartItemAddedEvent {
-    subject: Subjects.CartItemAdded;
+    subject: Subjects.CartItemAdded
     data: {
-        id: string;
-        userId: string;
+        id: string
+        userId: string
         items: {
-            itemId: string;
-            quantity: number;
-            price: number;
-        }[];
-        version: number;
-    };
+            itemId: string
+            quantity: number
+            price: number
+        }[]
+        version: number
+    }
 }

@@ -1,5 +1,5 @@
-import {CartItemUpdatedEvent, Publisher, Subjects} from "@orionco/common";
+import { CartItemUpdatedEvent, Publisher, Subjects } from '@orionco/common'
 
 export class CartItemUpdatedPublisher extends Publisher<CartItemUpdatedEvent> {
-    readonly subject = Subjects.CartItemUpdated;
+    readonly subject = Subjects.CartItemUpdated
 }
