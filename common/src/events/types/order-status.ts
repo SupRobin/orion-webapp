@@ -11,4 +11,10 @@ export enum OrderStatus {
 
     //The order has reserved the item and the user has provided  payment successfully
     Complete = 'complete',
+
+    //the order has been shipped
+    Shipped = "shipped",
+
+    //the order is still pending for some odd reason
+    Pending = 'pending',
 }
