@@ -9,6 +9,7 @@ exports.Item = void 0
 const mongoose_1 = __importDefault(require('mongoose'))
 const order_1 = require('./order')
 const mongoose_update_if_current_1 = require('mongoose-update-if-current')
+const common_1 = require('@orionco/common')
 const itemSchema = new mongoose_1.default.Schema(
     {
         title: {
@@ -19,6 +20,11 @@ const itemSchema = new mongoose_1.default.Schema(
             type: Number,
             required: true,
             min: 0,
+        },
+        quantity: {
+            type: Number,
+            required: true,
+            min: 1,
         },
     },
     {
@@ -43,6 +49,7 @@ itemSchema.statics.build = (attrs) => {
         _id: attrs.id,
         title: attrs.title,
         price: attrs.price,
+        quantity: attrs.quantity,
     })
 }
 itemSchema.methods.isReserved = async function () {
@@ -50,10 +57,21 @@ itemSchema.methods.isReserved = async function () {
     const existingOrder = await order_1.Order.findOne({
         item: this,
         status: {
-            $in: [order_1.OrderStatus.Created, order_1.OrderStatus.AwaitingPayment, order_1.OrderStatus.Complete],
+            $in: [
+                order_1.OrderStatus.Created,
+                order_1.OrderStatus.AwaitingPayment,
+                order_1.OrderStatus.Complete,
+            ],
         },
     })
     return !!existingOrder
+}
+itemSchema.statics.isAvailable = async function (itemId, requestQuantity) {
+    const available = await Item.findById(itemId)
+    if (!available) {
+        throw common_1.NotFoundError
+    }
+    return requestQuantity >= available.quantity
 }
 const Item = mongoose_1.default.model('Item', itemSchema)
 exports.Item = Item

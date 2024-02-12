@@ -15,7 +15,11 @@ class NatsWrapper {
         return this._client
     }
     connect(clusterId, clientId, url) {
-        this._client = node_nats_streaming_1.default.connect(clusterId, clientId, { url })
+        this._client = node_nats_streaming_1.default.connect(
+            clusterId,
+            clientId,
+            { url }
+        )
         return new Promise((resolve, reject) => {
             this.client.on('connect', () => {
                 console.log('Connected to NATS')

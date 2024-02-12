@@ -12,7 +12,9 @@ class ExpirationCompleteListener extends common_1.Listener {
         this.subject = common_1.Subjects.ExpirationComplete
     }
     async onMessage(data, msg) {
-        const order = await order_1.Order.findById(data.orderId).populate('item')
+        const order = await order_1.Order.findById(data.orderId).populate(
+            'item'
+        )
         if (!order) {
             throw new Error('Order not found')
         }
@@ -23,10 +25,12 @@ class ExpirationCompleteListener extends common_1.Listener {
             status: common_1.OrderStatus.Cancelled,
         })
         await order.save()
-        await new order_cancelled_publisher_1.OrderCancelledPublisher(this.client).publish({
+        await new order_cancelled_publisher_1.OrderCancelledPublisher(
+            this.client
+        ).publish({
             id: order.id,
             version: order.version,
-            item: {
+            items: {
                 id: order.item.id,
             },
         })

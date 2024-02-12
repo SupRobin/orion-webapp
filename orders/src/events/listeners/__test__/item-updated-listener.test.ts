@@ -14,6 +14,7 @@ const setup = async () => {
         id: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     //create a fake data object

@@ -11,12 +11,15 @@ const mongoose_1 = __importDefault(require('mongoose'))
 const items_1 = require('../../../models/items')
 const setup = async () => {
     //create a listener
-    const listener = new item_updated_listener_1.ItemUpdatedListener(nats_wrapper_1.natsWrapper.client)
+    const listener = new item_updated_listener_1.ItemUpdatedListener(
+        nats_wrapper_1.natsWrapper.client
+    )
     //create and save a item
     const item = items_1.Item.build({
         id: new mongoose_1.default.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     //create a fake data object

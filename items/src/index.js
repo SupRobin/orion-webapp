@@ -25,9 +25,13 @@ var __awaiter =
                 }
             }
             function step(result) {
-                result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected)
             }
-            step((generator = generator.apply(thisArg, _arguments || [])).next())
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            )
         })
     }
 var __importDefault =
@@ -68,10 +72,18 @@ const start = () =>
                 console.log('NATS connection closed')
                 process.exit()
             })
-            process.on('SIGINT', () => nats_wrapper_1.natsWrapper.client.close())
-            process.on('SIGTERM', () => nats_wrapper_1.natsWrapper.client.close())
-            new order_created_listener_1.OrderCreatedListener(nats_wrapper_1.natsWrapper.client).listen()
-            new order_cancelled_listener_1.OrderCancelledListener(nats_wrapper_1.natsWrapper.client).listen()
+            process.on('SIGINT', () =>
+                nats_wrapper_1.natsWrapper.client.close()
+            )
+            process.on('SIGTERM', () =>
+                nats_wrapper_1.natsWrapper.client.close()
+            )
+            new order_created_listener_1.OrderCreatedListener(
+                nats_wrapper_1.natsWrapper.client
+            ).listen()
+            new order_cancelled_listener_1.OrderCancelledListener(
+                nats_wrapper_1.natsWrapper.client
+            ).listen()
             yield mongoose_1.default.connect(process.env.MONGO_URI)
             console.log('connected to mongodb')
         } catch (err) {

@@ -25,9 +25,13 @@ var __awaiter =
                 }
             }
             function step(result) {
-                result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected)
             }
-            step((generator = generator.apply(thisArg, _arguments || [])).next())
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            )
         })
     }
 var __importDefault =
@@ -42,7 +46,10 @@ const mongoose_1 = __importDefault(require('mongoose'))
 it('returns a 404 if the item is not found', () =>
     __awaiter(void 0, void 0, void 0, function* () {
         const id = new mongoose_1.default.Types.ObjectId().toHexString()
-        yield (0, supertest_1.default)(app_1.app).get(`/api/items/${id}`).send().expect(404)
+        yield (0, supertest_1.default)(app_1.app)
+            .get(`/api/items/${id}`)
+            .send()
+            .expect(404)
     }))
 it('returns the item if the item is found', () =>
     __awaiter(void 0, void 0, void 0, function* () {

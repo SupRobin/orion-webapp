@@ -7,14 +7,15 @@ var __importDefault =
 Object.defineProperty(exports, '__esModule', { value: true })
 const supertest_1 = __importDefault(require('supertest'))
 const app_1 = require('../../app')
-const item_1 = require('../../models/item')
+const items_1 = require('../../models/items')
 const mongoose_1 = __importDefault(require('mongoose'))
 it('fetches the order', async () => {
     //Create item
-    const item = item_1.Item.build({
+    const item = items_1.Item.build({
         id: new mongoose_1.default.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     const user = global.signin()

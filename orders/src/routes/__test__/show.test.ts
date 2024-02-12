@@ -1,6 +1,6 @@
 import request from 'supertest'
 import { app } from '../../app'
-import { Item } from '../../models/item'
+import { Item } from '../../models/items'
 import mongoose from 'mongoose'
 
 it('fetches the order', async () => {
@@ -9,6 +9,7 @@ it('fetches the order', async () => {
         id: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
 
@@ -28,7 +29,11 @@ it('fetches the order', async () => {
         .send()
         .expect(404)
 
-    await request(app).post('/api/orders').set('Cookie', user).send({ item: item.id }).expect(400)
+    await request(app)
+        .post('/api/orders')
+        .set('Cookie', user)
+        .send({ item: item.id })
+        .expect(400)
 
     // expect(fetchedOrder.id).toEqual(order.id);
 })

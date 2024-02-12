@@ -14,6 +14,7 @@ const setup = async () => {
         id: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     const order = Order.build({
@@ -50,7 +51,9 @@ it('emit an order cancelled event', async () => {
 
     expect(natsWrapper.client.publish).toHaveBeenCalled()
 
-    const eventData = JSON.parse((natsWrapper.client.publish as jest.Mock).mock.calls[0][1])
+    const eventData = JSON.parse(
+        (natsWrapper.client.publish as jest.Mock).mock.calls[0][1]
+    )
 
     expect(eventData.id).toEqual(order.id)
 })

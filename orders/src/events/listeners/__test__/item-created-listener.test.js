@@ -11,7 +11,9 @@ const mongoose_1 = __importDefault(require('mongoose'))
 const items_1 = require('../../../models/items')
 const setup = async () => {
     //create an instance of the listener
-    const listener = new item_created_listener_1.ItemCreatedListener(nats_wrapper_1.natsWrapper.client)
+    const listener = new item_created_listener_1.ItemCreatedListener(
+        nats_wrapper_1.natsWrapper.client
+    )
     const data = {
         version: 0,
         id: new mongoose_1.default.Types.ObjectId().toHexString(),

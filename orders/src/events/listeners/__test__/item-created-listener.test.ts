@@ -7,12 +7,20 @@ import { Item } from '../../../models/items'
 const setup = async () => {
     //create an instance of the listener
     const listener = new ItemCreatedListener(natsWrapper.client)
-    const data: ItemCreatedEvent['data'] = {
+    const data: {
+        price: number
+        id: string
+        title: string
+        version: number
+        userId: string
+        quantity: number
+    } = {
         version: 0,
         id: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 10,
         userId: new mongoose.Types.ObjectId().toHexString(),
+        quantity: 1,
     }
 
     //create a fake data event

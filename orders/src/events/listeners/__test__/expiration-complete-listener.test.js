@@ -12,11 +12,15 @@ const order_1 = require('../../../models/order')
 const common_1 = require('@orionco/common')
 const items_1 = require('../../../models/items')
 const setup = async () => {
-    const listener = new expiration_complete_listener_1.ExpirationCompleteListener(nats_wrapper_1.natsWrapper.client)
+    const listener =
+        new expiration_complete_listener_1.ExpirationCompleteListener(
+            nats_wrapper_1.natsWrapper.client
+        )
     const item = items_1.Item.build({
         id: new mongoose_1.default.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     const order = order_1.Order.build({
@@ -45,7 +49,9 @@ it('emit an order cancelled event', async () => {
     const { listener, order, data, msg } = await setup()
     await listener.onMessage(data, msg)
     expect(nats_wrapper_1.natsWrapper.client.publish).toHaveBeenCalled()
-    const eventData = JSON.parse(nats_wrapper_1.natsWrapper.client.publish.mock.calls[0][1])
+    const eventData = JSON.parse(
+        nats_wrapper_1.natsWrapper.client.publish.mock.calls[0][1]
+    )
     expect(eventData.id).toEqual(order.id)
 })
 it('ack the message', async () => {

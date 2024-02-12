@@ -13,6 +13,7 @@ const buildItem = async () => {
         id: 'apples',
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     return item
@@ -42,7 +43,10 @@ it('it fetches orders for a particular user', async () => {
         .send({ itemId: itemThree.id })
         .expect(201)
     ///Make request to get orders for user #2
-    const response = await (0, supertest_1.default)(app_1.app).get('/api/orders').set('Cookie', userTwo).expect(200)
+    const response = await (0, supertest_1.default)(app_1.app)
+        .get('/api/orders')
+        .set('Cookie', userTwo)
+        .expect(200)
     console.log(orderOne)
     //Ensure we only got the orders for user #2
     expect(response.body.length).toEqual(2)

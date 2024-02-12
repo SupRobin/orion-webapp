@@ -9,7 +9,7 @@ const mongoose_1 = __importDefault(require('mongoose'))
 const supertest_1 = __importDefault(require('supertest'))
 const app_1 = require('../../app')
 const order_1 = require('../../models/order')
-const item_1 = require('../../models/item')
+const items_1 = require('../../models/items')
 const common_1 = require('@orionco/common')
 const nats_wrapper_1 = require('../../nats-wrapper')
 it('returns an error if the item does not exist', async () => {
@@ -21,10 +21,11 @@ it('returns an error if the item does not exist', async () => {
         .expect(404)
 })
 it('returns an error if the item is already reserved', async () => {
-    const item = item_1.Item.build({
+    const item = items_1.Item.build({
         id: new mongoose_1.default.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     const order = order_1.Order.build({
@@ -41,10 +42,11 @@ it('returns an error if the item is already reserved', async () => {
         .expect(400)
 })
 it('reserves a item', async () => {
-    const item = item_1.Item.build({
+    const item = items_1.Item.build({
         id: new mongoose_1.default.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     await (0, supertest_1.default)(app_1.app)
@@ -54,10 +56,11 @@ it('reserves a item', async () => {
         .expect(201)
 })
 it('emits an order created event', async () => {
-    const item = item_1.Item.build({
+    const item = items_1.Item.build({
         id: new mongoose_1.default.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     await (0, supertest_1.default)(app_1.app)

@@ -1,4 +1,9 @@
-import { Listener, Subjects, OrderCancelledEvent, OrderStatus } from '@orionco/common'
+import {
+    Listener,
+    Subjects,
+    OrderCancelledEvent,
+    OrderStatus,
+} from '@orionco/common'
 import { Message } from 'node-nats-streaming'
 import { queueGroupName } from './queue-group-name'
 import { Order } from '../../models/orders'

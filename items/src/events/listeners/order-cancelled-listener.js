@@ -25,9 +25,13 @@ var __awaiter =
                 }
             }
             function step(result) {
-                result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected)
             }
-            step((generator = generator.apply(thisArg, _arguments || [])).next())
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            )
         })
     }
 Object.defineProperty(exports, '__esModule', { value: true })
@@ -54,7 +58,9 @@ class OrderCancelledListener extends common_1.Listener {
             item.set({ orderId: undefined })
             //save the item
             yield item.save()
-            yield new item_updated_publisher_1.ItemUpdatedPublisher(this.client).publish({
+            yield new item_updated_publisher_1.ItemUpdatedPublisher(
+                this.client
+            ).publish({
                 id: item.id,
                 price: item.price,
                 title: item.title,

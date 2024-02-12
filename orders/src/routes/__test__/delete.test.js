@@ -17,6 +17,7 @@ it('marks an order as cancelled', async () => {
         id: new mongoose_1.default.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     const user = global.signin()
@@ -27,7 +28,11 @@ it('marks an order as cancelled', async () => {
         .send({ item: item.id })
         .expect(201)
     //make a request to cancel the order
-    await (0, supertest_1.default)(app_1.app).post(`/api/orders/${order.id}`).set('Cookie', user).send().expect(204)
+    await (0, supertest_1.default)(app_1.app)
+        .post(`/api/orders/${order.id}`)
+        .set('Cookie', user)
+        .send()
+        .expect(204)
     const updatedOrder = await order_1.Order.findById(order.id)
     //expectation to make sure the thing is cancelled
     expect(updatedOrder.status).toEqual(order_1.OrderStatus.Cancelled)
@@ -37,6 +42,7 @@ it('emits an order cancelled event', async () => {
         id: new mongoose_1.default.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     console.log(item)
@@ -48,7 +54,11 @@ it('emits an order cancelled event', async () => {
         .send({ item: item.id })
         .expect(201)
     //make a request to cancel the order
-    await (0, supertest_1.default)(app_1.app).post(`/api/orders/${order.id}`).set('Cookie', user).send().expect(204)
+    await (0, supertest_1.default)(app_1.app)
+        .post(`/api/orders/${order.id}`)
+        .set('Cookie', user)
+        .send()
+        .expect(204)
     const updatedOrder = await order_1.Order.findById(order.id)
     //expectation to make sure the thing is cancelled
     expect(nats_wrapper_1.natsWrapper.client.publish).toHaveBeenCalled()

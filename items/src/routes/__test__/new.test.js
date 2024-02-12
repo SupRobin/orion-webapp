@@ -25,9 +25,13 @@ var __awaiter =
                 }
             }
             function step(result) {
-                result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected)
             }
-            step((generator = generator.apply(thisArg, _arguments || [])).next())
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            )
         })
     }
 var __importDefault =
@@ -42,12 +46,17 @@ const items_1 = require('../../models/items')
 const nats_wrapper_1 = require('../../nats-wrapper')
 it('has a route handler listening to /api/items for post requests', () =>
     __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield (0, supertest_1.default)(app_1.app).post('/api/items').send({})
+        const response = yield (0, supertest_1.default)(app_1.app)
+            .post('/api/items')
+            .send({})
         expect(response.status).not.toEqual(404)
     }))
 it('can only be accessed if the user is signed in', () =>
     __awaiter(void 0, void 0, void 0, function* () {
-        yield (0, supertest_1.default)(app_1.app).post('/api/items').send({}).expect(401)
+        yield (0, supertest_1.default)(app_1.app)
+            .post('/api/items')
+            .send({})
+            .expect(401)
     }))
 it('returns a status other than 401 if the user is signed in', () =>
     __awaiter(void 0, void 0, void 0, function* () {

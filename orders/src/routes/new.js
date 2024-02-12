@@ -42,7 +42,9 @@ router.post(
         }
         // Calculate an expiration date for this order
         const expiration = new Date()
-        expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS)
+        expiration.setSeconds(
+            expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS
+        )
         // Build the order and save it to the database
         const order = order_1.Order.build({
             userId: req.currentUser.id,
@@ -52,7 +54,9 @@ router.post(
         })
         await order.save()
         // Publish an event saying that an order was created
-        await new order_created_publisher_1.OrderCreatedPublisher(nats_wrapper_1.natsWrapper.client).publish({
+        await new order_created_publisher_1.OrderCreatedPublisher(
+            nats_wrapper_1.natsWrapper.client
+        ).publish({
             id: order.id,
             version: order.version,
             status: order.status,

@@ -12,7 +12,9 @@ const order_1 = require('../models/order')
 const router = express_1.default.Router()
 exports.showOrderRouter = router
 router.get('/api/orders/:orderId', common_1.requireAuth, async (req, res) => {
-    const order = await order_1.Order.findById(req.params.orderId).populate('item')
+    const order = await order_1.Order.findById(req.params.orderId).populate(
+        'item'
+    )
     if (!order) {
         throw new common_1.NotFoundError()
     }

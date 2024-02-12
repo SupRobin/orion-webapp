@@ -25,9 +25,13 @@ var __awaiter =
                 }
             }
             function step(result) {
-                result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected)
             }
-            step((generator = generator.apply(thisArg, _arguments || [])).next())
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            )
         })
     }
 var __importDefault =
@@ -85,10 +89,13 @@ it('returns a 401 if the user does not own the item', () =>
 it('returns a 400 if the user provides an invalid title or price', () =>
     __awaiter(void 0, void 0, void 0, function* () {
         const cookie = global.signin()
-        const response = yield (0, supertest_1.default)(app_1.app).post('/api/items').set('Cookie', cookie).send({
-            title: 'asldkfj',
-            price: 20,
-        })
+        const response = yield (0, supertest_1.default)(app_1.app)
+            .post('/api/items')
+            .set('Cookie', cookie)
+            .send({
+                title: 'asldkfj',
+                price: 20,
+            })
         yield (0, supertest_1.default)(app_1.app)
             .put(`/api/items/${response.body.id}`)
             .set('Cookie', cookie)
@@ -109,10 +116,13 @@ it('returns a 400 if the user provides an invalid title or price', () =>
 it('updates the item provided valid inputs', () =>
     __awaiter(void 0, void 0, void 0, function* () {
         const cookie = global.signin()
-        const response = yield (0, supertest_1.default)(app_1.app).post('/api/items').set('Cookie', cookie).send({
-            title: 'asldkfj',
-            price: 20,
-        })
+        const response = yield (0, supertest_1.default)(app_1.app)
+            .post('/api/items')
+            .set('Cookie', cookie)
+            .send({
+                title: 'asldkfj',
+                price: 20,
+            })
         yield (0, supertest_1.default)(app_1.app)
             .put(`/api/items/${response.body.id}`)
             .set('Cookie', cookie)
@@ -121,17 +131,22 @@ it('updates the item provided valid inputs', () =>
                 price: 100,
             })
             .expect(200)
-        const itemResponse = yield (0, supertest_1.default)(app_1.app).get(`/api/items/${response.body.id}`).send()
+        const itemResponse = yield (0, supertest_1.default)(app_1.app)
+            .get(`/api/items/${response.body.id}`)
+            .send()
         expect(itemResponse.body.title).toEqual('new title')
         expect(itemResponse.body.price).toEqual(100)
     }))
 it('publishes an event', () =>
     __awaiter(void 0, void 0, void 0, function* () {
         const cookie = global.signin()
-        const response = yield (0, supertest_1.default)(app_1.app).post('/api/items').set('Cookie', cookie).send({
-            title: 'asldkfj',
-            price: 20,
-        })
+        const response = yield (0, supertest_1.default)(app_1.app)
+            .post('/api/items')
+            .set('Cookie', cookie)
+            .send({
+                title: 'asldkfj',
+                price: 20,
+            })
         yield (0, supertest_1.default)(app_1.app)
             .put(`/api/items/${response.body.id}`)
             .set('Cookie', cookie)
@@ -140,7 +155,9 @@ it('publishes an event', () =>
                 price: 100,
             })
             .expect(200)
-        const itemResponse = yield (0, supertest_1.default)(app_1.app).get(`/api/items/${response.body.id}`).send()
+        const itemResponse = yield (0, supertest_1.default)(app_1.app)
+            .get(`/api/items/${response.body.id}`)
+            .send()
         expect(itemResponse.body.title).toEqual('new title')
         expect(itemResponse.body.price).toEqual(100)
         expect(nats_wrapper_1.natsWrapper.client.publish).toHaveBeenCalled()
@@ -148,10 +165,13 @@ it('publishes an event', () =>
 it('rejects update of the item is reserved ', () =>
     __awaiter(void 0, void 0, void 0, function* () {
         const cookie = global.signin()
-        const response = yield (0, supertest_1.default)(app_1.app).post('/api/items').set('Cookie', cookie).send({
-            title: 'asldkfj',
-            price: 20,
-        })
+        const response = yield (0, supertest_1.default)(app_1.app)
+            .post('/api/items')
+            .set('Cookie', cookie)
+            .send({
+                title: 'asldkfj',
+                price: 20,
+            })
         const item = yield items_1.Item.findById(response.body.id)
         item.set({
             orderId: new mongoose_1.default.Types.ObjectId().toHexString(),

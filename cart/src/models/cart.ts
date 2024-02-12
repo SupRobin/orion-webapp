@@ -87,7 +87,8 @@ cartSchema.statics.build = (attrs: CartAttrs) => {
 }
 cartSchema.methods.calculateTotal = function () {
     return this.items.reduce(
-        (total: number, item: { quantity: number; price: number }) => total + item.quantity * item.price,
+        (total: number, item: { quantity: number; price: number }) =>
+            total + item.quantity * item.price,
         0
     )
 }

@@ -2,13 +2,17 @@ import mongoose from 'mongoose'
 import request from 'supertest'
 import { app } from '../../app'
 import { Order } from '../../models/order'
-import { Item } from '../../models/item'
+import { Item } from '../../models/items'
 import { OrderStatus } from '@orionco/common'
 import { natsWrapper } from '../../nats-wrapper'
 
 it('returns an error if the item does not exist', async () => {
     const itemId = new mongoose.Types.ObjectId().toHexString()
-    await request(app).post('/api/orders').set('Cookie', global.signin()).send({ itemId }).expect(404)
+    await request(app)
+        .post('/api/orders')
+        .set('Cookie', global.signin())
+        .send({ itemId })
+        .expect(404)
 })
 
 it('returns an error if the item is already reserved', async () => {
@@ -16,6 +20,7 @@ it('returns an error if the item is already reserved', async () => {
         id: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
     const order = Order.build({
@@ -26,7 +31,11 @@ it('returns an error if the item is already reserved', async () => {
     })
     await order.save()
 
-    await request(app).post('/api/orders').set('Cookie', global.signin()).send({ itemId: item.id }).expect(400)
+    await request(app)
+        .post('/api/orders')
+        .set('Cookie', global.signin())
+        .send({ itemId: item.id })
+        .expect(400)
 })
 
 it('reserves a item', async () => {
@@ -34,9 +43,14 @@ it('reserves a item', async () => {
         id: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
-    await request(app).post('/api/orders').set('Cookie', global.signin()).send({ itemId: item.id }).expect(201)
+    await request(app)
+        .post('/api/orders')
+        .set('Cookie', global.signin())
+        .send({ itemId: item.id })
+        .expect(201)
 })
 
 it('emits an order created event', async () => {
@@ -44,9 +58,14 @@ it('emits an order created event', async () => {
         id: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
-    await request(app).post('/api/orders').set('Cookie', global.signin()).send({ itemId: item.id }).expect(201)
+    await request(app)
+        .post('/api/orders')
+        .set('Cookie', global.signin())
+        .send({ itemId: item.id })
+        .expect(201)
 
     expect(natsWrapper.client.publish).toHaveBeenCalled()
 })

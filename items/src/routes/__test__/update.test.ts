@@ -28,10 +28,13 @@ it('returns a 401 if the user is not authenticated', async () => {
 })
 
 it('returns a 401 if the user does not own the item', async () => {
-    const response = await request(app).post('/api/items/').set('Cookie', global.signin()).send({
-        title: 'asldkfj',
-        price: 20,
-    })
+    const response = await request(app)
+        .post('/api/items/')
+        .set('Cookie', global.signin())
+        .send({
+            title: 'asldkfj',
+            price: 20,
+        })
 
     await request(app)
         .put(`/api/items/${response.body.id}`)
@@ -46,10 +49,13 @@ it('returns a 401 if the user does not own the item', async () => {
 it('returns a 400 if the user provides an invalid title or price', async () => {
     const cookie = global.signin()
 
-    const response = await request(app).post('/api/items').set('Cookie', cookie).send({
-        title: 'asldkfj',
-        price: 20,
-    })
+    const response = await request(app)
+        .post('/api/items')
+        .set('Cookie', cookie)
+        .send({
+            title: 'asldkfj',
+            price: 20,
+        })
 
     await request(app)
         .put(`/api/items/${response.body.id}`)
@@ -73,10 +79,13 @@ it('returns a 400 if the user provides an invalid title or price', async () => {
 it('updates the item provided valid inputs', async () => {
     const cookie = global.signin()
 
-    const response = await request(app).post('/api/items').set('Cookie', cookie).send({
-        title: 'asldkfj',
-        price: 20,
-    })
+    const response = await request(app)
+        .post('/api/items')
+        .set('Cookie', cookie)
+        .send({
+            title: 'asldkfj',
+            price: 20,
+        })
 
     await request(app)
         .put(`/api/items/${response.body.id}`)
@@ -87,7 +96,9 @@ it('updates the item provided valid inputs', async () => {
         })
         .expect(200)
 
-    const itemResponse = await request(app).get(`/api/items/${response.body.id}`).send()
+    const itemResponse = await request(app)
+        .get(`/api/items/${response.body.id}`)
+        .send()
 
     expect(itemResponse.body.title).toEqual('new title')
     expect(itemResponse.body.price).toEqual(100)
@@ -95,10 +106,13 @@ it('updates the item provided valid inputs', async () => {
 
 it('publishes an event', async () => {
     const cookie = global.signin()
-    const response = await request(app).post('/api/items').set('Cookie', cookie).send({
-        title: 'asldkfj',
-        price: 20,
-    })
+    const response = await request(app)
+        .post('/api/items')
+        .set('Cookie', cookie)
+        .send({
+            title: 'asldkfj',
+            price: 20,
+        })
 
     await request(app)
         .put(`/api/items/${response.body.id}`)
@@ -109,7 +123,9 @@ it('publishes an event', async () => {
         })
         .expect(200)
 
-    const itemResponse = await request(app).get(`/api/items/${response.body.id}`).send()
+    const itemResponse = await request(app)
+        .get(`/api/items/${response.body.id}`)
+        .send()
 
     expect(itemResponse.body.title).toEqual('new title')
     expect(itemResponse.body.price).toEqual(100)
@@ -118,10 +134,13 @@ it('publishes an event', async () => {
 
 it('rejects update of the item is reserved ', async () => {
     const cookie = global.signin()
-    const response = await request(app).post('/api/items').set('Cookie', cookie).send({
-        title: 'asldkfj',
-        price: 20,
-    })
+    const response = await request(app)
+        .post('/api/items')
+        .set('Cookie', cookie)
+        .send({
+            title: 'asldkfj',
+            price: 20,
+        })
     const item = await Item.findById(response.body.id)
     item!.set({ orderId: new mongoose.Types.ObjectId().toHexString() })
     await item!.save()

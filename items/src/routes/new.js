@@ -25,9 +25,13 @@ var __awaiter =
                 }
             }
             function step(result) {
-                result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected)
             }
-            step((generator = generator.apply(thisArg, _arguments || [])).next())
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            )
         })
     }
 var __importDefault =
@@ -48,8 +52,13 @@ exports.createItemRouter = router
 router.post(
     '/api/items/',
     [
-        (0, express_validator_1.body)('title').not().isEmpty().withMessage('Title is required'),
-        (0, express_validator_1.body)('price').isFloat({ gt: 0 }).withMessage('Price must be greater than 0'),
+        (0, express_validator_1.body)('title')
+            .not()
+            .isEmpty()
+            .withMessage('Title is required'),
+        (0, express_validator_1.body)('price')
+            .isFloat({ gt: 0 })
+            .withMessage('Price must be greater than 0'),
     ],
     common_1.requireAuth,
     common_1.validateRequest,
@@ -62,7 +71,9 @@ router.post(
                 userId: req.currentUser.id,
             })
             yield item.save()
-            yield new item_created_publisher_1.ItemCreatedPublisher(nats_wrapper_1.natsWrapper.client).publish({
+            yield new item_created_publisher_1.ItemCreatedPublisher(
+                nats_wrapper_1.natsWrapper.client
+            ).publish({
                 id: item.id,
                 title: item.title,
                 price: item.price,

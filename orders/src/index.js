@@ -40,10 +40,18 @@ const start = async () => {
         })
         process.on('SIGINT', () => nats_wrapper_1.natsWrapper.client.close())
         process.on('SIGTERM', () => nats_wrapper_1.natsWrapper.client.close())
-        new item_created_listener_1.ItemCreatedListener(nats_wrapper_1.natsWrapper.client).listen()
-        new item_updated_listener_1.ItemUpdatedListener(nats_wrapper_1.natsWrapper.client).listen()
-        new expiration_complete_listener_1.ExpirationCompleteListener(nats_wrapper_1.natsWrapper.client).listen()
-        new payment_created_listener_1.PaymentCreatedListener(nats_wrapper_1.natsWrapper.client).listen()
+        new item_created_listener_1.ItemCreatedListener(
+            nats_wrapper_1.natsWrapper.client
+        ).listen()
+        new item_updated_listener_1.ItemUpdatedListener(
+            nats_wrapper_1.natsWrapper.client
+        ).listen()
+        new expiration_complete_listener_1.ExpirationCompleteListener(
+            nats_wrapper_1.natsWrapper.client
+        ).listen()
+        new payment_created_listener_1.PaymentCreatedListener(
+            nats_wrapper_1.natsWrapper.client
+        ).listen()
         await mongoose_1.default.connect(process.env.MONGO_URI)
         console.log('Connected to MongoDb')
     } catch (err) {

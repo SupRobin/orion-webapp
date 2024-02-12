@@ -1,4 +1,9 @@
-import { Listener, Subjects, ExpirationCompleteEvent, OrderStatus } from '@orionco/common'
+import {
+    Listener,
+    Subjects,
+    ExpirationCompleteEvent,
+    OrderStatus,
+} from '@orionco/common'
 import { Message } from 'node-nats-streaming'
 import { Order } from '../../models/order'
 import { queuegroupname } from './queuegroupname'
@@ -26,7 +31,7 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent
         await new OrderCancelledPublisher(this.client).publish({
             id: order.id,
             version: order.version,
-            item: {
+            items: {
                 id: order.item.id,
             },
         })

@@ -1,6 +1,11 @@
 import mongoose from 'mongoose'
 import express, { Request, Response } from 'express'
-import { BadRequestError, NotFoundError, OrderStatus, validateRequest } from '@orionco/common'
+import {
+    BadRequestError,
+    NotFoundError,
+    OrderStatus,
+    validateRequest,
+} from '@orionco/common'
 import { body } from 'express-validator'
 import { Item } from '../models/items'
 import { Order } from '../models/orders'
@@ -40,7 +45,9 @@ router.post(
 
         // Calculate an expiration date for this order
         const expiration = new Date()
-        expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS)
+        expiration.setSeconds(
+            expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS
+        )
 
         // Build the order and save it to the database
         const order = Order.build({

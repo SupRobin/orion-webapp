@@ -25,9 +25,13 @@ var __awaiter =
                 }
             }
             function step(result) {
-                result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected)
             }
-            step((generator = generator.apply(thisArg, _arguments || [])).next())
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            )
         })
     }
 var __importDefault =
@@ -39,16 +43,22 @@ Object.defineProperty(exports, '__esModule', { value: true })
 const supertest_1 = __importDefault(require('supertest'))
 const app_1 = require('../../app')
 const createItem = () => {
-    return (0, supertest_1.default)(app_1.app).post('/api/items').set('Cookie', global.signin()).send({
-        title: 'asldkf',
-        price: 20,
-    })
+    return (0, supertest_1.default)(app_1.app)
+        .post('/api/items')
+        .set('Cookie', global.signin())
+        .send({
+            title: 'asldkf',
+            price: 20,
+        })
 }
 it('can fetch a list of items', () =>
     __awaiter(void 0, void 0, void 0, function* () {
         yield createItem()
         yield createItem()
         yield createItem()
-        const response = yield (0, supertest_1.default)(app_1.app).get('/api/items').send().expect(200)
+        const response = yield (0, supertest_1.default)(app_1.app)
+            .get('/api/items')
+            .send()
+            .expect(200)
         expect(response.body.length).toEqual(3)
     }))

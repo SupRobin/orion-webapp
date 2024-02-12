@@ -25,9 +25,13 @@ var __awaiter =
                 }
             }
             function step(result) {
-                result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected)
             }
-            step((generator = generator.apply(thisArg, _arguments || [])).next())
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            )
         })
     }
 var __importDefault =
@@ -44,7 +48,9 @@ const mongoose_1 = __importDefault(require('mongoose'))
 const setup = () =>
     __awaiter(void 0, void 0, void 0, function* () {
         // Create an instance of the listener
-        const listener = new order_created_listener_1.OrderCreatedListener(nats_wrapper_1.natsWrapper.client)
+        const listener = new order_created_listener_1.OrderCreatedListener(
+            nats_wrapper_1.natsWrapper.client
+        )
         //create and save a item
         const item = items_1.Item.build({
             title: 'concert',
@@ -88,6 +94,8 @@ it('publishes a item updated event', () =>
         const { listener, item, data, msg } = yield setup()
         yield listener.onMessage(data, msg)
         expect(nats_wrapper_1.natsWrapper.client.publish).toHaveBeenCalled()
-        const itemData = JSON.parse(nats_wrapper_1.natsWrapper.client.publish.mock.calls[0][1])
+        const itemData = JSON.parse(
+            nats_wrapper_1.natsWrapper.client.publish.mock.calls[0][1]
+        )
         expect(data.id).toEqual(itemData.orderId)
     }))

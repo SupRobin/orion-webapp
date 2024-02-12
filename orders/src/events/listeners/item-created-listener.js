@@ -11,11 +11,12 @@ class ItemCreatedListener extends common_1.Listener {
         this.queueGroupName = queuegroupname_1.queuegroupname
     }
     async onMessage(data, msg) {
-        const { id, title, price } = data
+        const { id, title, price, quantity: number } = data
         const item = items_1.Item.build({
             id,
             title,
             price,
+            quantity,
         })
         await item.save()
         msg.ack()

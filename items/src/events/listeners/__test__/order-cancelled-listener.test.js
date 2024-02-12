@@ -25,9 +25,13 @@ var __awaiter =
                 }
             }
             function step(result) {
-                result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected)
             }
-            step((generator = generator.apply(thisArg, _arguments || [])).next())
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            )
         })
     }
 var __importDefault =
@@ -42,7 +46,9 @@ const items_1 = require('../../../models/items')
 const mongoose_1 = __importDefault(require('mongoose'))
 const setup = () =>
     __awaiter(void 0, void 0, void 0, function* () {
-        const listener = new order_cancelled_listener_1.OrderCancelledListener(nats_wrapper_1.natsWrapper.client)
+        const listener = new order_cancelled_listener_1.OrderCancelledListener(
+            nats_wrapper_1.natsWrapper.client
+        )
         const orderId = new mongoose_1.default.Types.ObjectId().toHexString()
         const item = items_1.Item.build({
             title: 'asdaaf',

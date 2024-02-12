@@ -22,7 +22,10 @@ it('returns the item if the item is found', async () => {
         })
         .expect(201)
 
-    const itemResponse = await request(app).get(`/api/items/${response.body.id}`).send().expect(200)
+    const itemResponse = await request(app)
+        .get(`/api/items/${response.body.id}`)
+        .send()
+        .expect(200)
 
     expect(itemResponse.body.title).toEqual(title)
     expect(itemResponse.body.price).toEqual(price)

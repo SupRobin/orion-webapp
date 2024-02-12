@@ -8,7 +8,7 @@ interface OrderAttrs {
     userId: string
     status: OrderStatus
     expiresAt: Date
-    item: ItemDoc
+    items: [ItemDoc]
 }
 
 interface OrderDoc extends mongoose.Document {
@@ -20,7 +20,12 @@ interface OrderDoc extends mongoose.Document {
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
-    build(attrs: { item: ItemDoc; userId: string; expiresAt: Date; status: OrderStatus }): OrderDoc
+    build(attrs: {
+        item: ItemDoc
+        userId: string
+        expiresAt: Date
+        status: OrderStatus
+    }): OrderDoc
 }
 
 const orderSchema = new mongoose.Schema(

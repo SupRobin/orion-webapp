@@ -1,6 +1,12 @@
 import express, { Request, Response } from 'express'
 import { body } from 'express-validator'
-import { BadRequestError, NotAuthorizedError, NotFoundError, requireAuth, validateRequest } from '@orionco/common'
+import {
+    BadRequestError,
+    NotAuthorizedError,
+    NotFoundError,
+    requireAuth,
+    validateRequest,
+} from '@orionco/common'
 import { Item } from '../models/items'
 import { ItemUpdatedPublisher } from '../events/publishers/item-updated-publisher'
 import { natsWrapper } from '../nats-wrapper'
@@ -11,7 +17,9 @@ router.put(
     '/api/items/:id',
     [
         body('title').not().isEmpty().withMessage('Title is required'),
-        body('price').isFloat({ gt: 0 }).withMessage('Price must be provided and must be greater than 0'),
+        body('price')
+            .isFloat({ gt: 0 })
+            .withMessage('Price must be provided and must be greater than 0'),
     ],
     requireAuth,
     validateRequest,

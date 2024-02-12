@@ -15,7 +15,10 @@ export interface CartDoc extends mongoose.Document {
 
 interface CartModel extends mongoose.Model<CartDoc> {
     build(attrs: CartAttrs): CartDoc
-    findByEvent(event: { cartId: string; userId: string | null }): Promise<CartDoc | null>
+    findByEvent(event: {
+        cartId: string
+        userId: string | null
+    }): Promise<CartDoc | null>
 }
 
 const cartSchema = new mongoose.Schema(

@@ -25,9 +25,13 @@ var __awaiter =
                 }
             }
             function step(result) {
-                result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected)
             }
-            step((generator = generator.apply(thisArg, _arguments || [])).next())
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            )
         })
     }
 var __importDefault =
@@ -48,7 +52,10 @@ exports.updateItemRouter = router
 router.put(
     '/api/items/:id',
     [
-        (0, express_validator_1.body)('title').not().isEmpty().withMessage('Title is required'),
+        (0, express_validator_1.body)('title')
+            .not()
+            .isEmpty()
+            .withMessage('Title is required'),
         (0, express_validator_1.body)('price')
             .isFloat({ gt: 0 })
             .withMessage('Price must be provided and must be greater than 0'),
@@ -62,7 +69,9 @@ router.put(
                 throw new common_1.NotFoundError()
             }
             if (item.orderId) {
-                throw new common_1.BadRequestError('Cannot edit a reserved item')
+                throw new common_1.BadRequestError(
+                    'Cannot edit a reserved item'
+                )
             }
             if (item.userId !== req.currentUser.id) {
                 throw new common_1.NotAuthorizedError()
@@ -72,7 +81,9 @@ router.put(
                 price: req.body.price,
             })
             yield item.save()
-            yield new item_updated_publisher_1.ItemUpdatedPublisher(nats_wrapper_1.natsWrapper.client).publish({
+            yield new item_updated_publisher_1.ItemUpdatedPublisher(
+                nats_wrapper_1.natsWrapper.client
+            ).publish({
                 id: item.id,
                 title: item.title,
                 price: item.price,

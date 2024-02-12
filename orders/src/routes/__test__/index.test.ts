@@ -8,6 +8,7 @@ const buildItem = async () => {
         id: 'apples',
         title: 'concert',
         price: 20,
+        quantity: 1,
     })
     await item.save()
 
@@ -24,7 +25,11 @@ it('it fetches orders for a particular user', async () => {
     const userTwo = global.signin()
 
     //Create 1 order as user #1
-    await request(app).post('/api/orders').set('Cookie', userOne).send({ itemId: itemOne.id }).expect(201)
+    await request(app)
+        .post('/api/orders')
+        .set('Cookie', userOne)
+        .send({ itemId: itemOne.id })
+        .expect(201)
     //Create 2 orders as user #2
     const { body: orderOne } = await request(app)
         .post('/api/orders')
@@ -38,7 +43,10 @@ it('it fetches orders for a particular user', async () => {
         .expect(201)
 
     ///Make request to get orders for user #2
-    const response = await request(app).get('/api/orders').set('Cookie', userTwo).expect(200)
+    const response = await request(app)
+        .get('/api/orders')
+        .set('Cookie', userTwo)
+        .expect(200)
 
     console.log(orderOne)
 

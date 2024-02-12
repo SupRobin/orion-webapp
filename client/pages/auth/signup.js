@@ -24,7 +24,11 @@ const signup = () => {
             <h1> Signup </h1>
             <div className={'form-group'}>
                 <label className={'form-control'}> Email address </label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} className={'form-control'} />
+                <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={'form-control'}
+                />
             </div>
             <div className={'form-group'}>
                 <label className={'form-control'}> Password </label>

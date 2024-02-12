@@ -1,16 +1,19 @@
 import mongoose from 'mongoose'
 import { Order, OrderStatus } from './order'
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current'
+import { NotFoundError } from '@orionco/common'
 
 interface ItemAttrs {
     id: string
     title: string
     price: number
+    quantity: number
 }
 
 export interface ItemDoc extends mongoose.Document {
     title: string
     price: number
+    quantity: number
     version: number
     isReserved(): Promise<boolean>
 }
@@ -30,6 +33,11 @@ const itemSchema = new mongoose.Schema(
             type: Number,
             required: true,
             min: 0,
+        },
+        quantity: {
+            type: Number,
+            required: true,
+            min: 1,
         },
     },
     {
@@ -56,6 +64,7 @@ itemSchema.statics.build = (attrs: ItemAttrs) => {
         _id: attrs.id,
         title: attrs.title,
         price: attrs.price,
+        quantity: attrs.quantity,
     })
 }
 itemSchema.methods.isReserved = async function () {
@@ -63,11 +72,26 @@ itemSchema.methods.isReserved = async function () {
     const existingOrder = await Order.findOne({
         item: this,
         status: {
-            $in: [OrderStatus.Created, OrderStatus.AwaitingPayment, OrderStatus.Complete],
+            $in: [
+                OrderStatus.Created,
+                OrderStatus.AwaitingPayment,
+                OrderStatus.Complete,
+            ],
         },
     })
 
     return !!existingOrder
+}
+
+itemSchema.statics.isAvailable = async function (
+    itemId: string,
+    requestQuantity: number
+) {
+    const available = await Item.findById(itemId)
+    if (!available) {
+        throw NotFoundError
+    }
+    return requestQuantity >= available.quantity
 }
 
 const Item = mongoose.model<ItemDoc, ItemModel>('Item', itemSchema)
